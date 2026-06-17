@@ -439,18 +439,18 @@ window.dev_ton_wallet = "UQA-nWewa9gdU0Oa7Ua__Gcwi1DdAjP6RxZ1s9OarjvEVuug";
 
 // وظيفة إرسال بيانات الإحالة لجوجل شيت بمجرد دخول شخص جديد
 async function registerReferral() {
-    if (startParam && startParam !== myUserId.toString()) {
-        try {
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors",
-                body: JSON.stringify({ referrerId: startParam, newUserId: myUserId })
-            });
-            console.log("تم إرسال بيانات الإحالة بنجاح!");
-        } catch (e) {
-            console.error("خطأ أثناء إرسال بيانات الإحالة", e);
-        }
-    }
+if (startParam && startParam !== myUserId.toString()) {
+try {
+await fetch(GOOGLE_SCRIPT_URL, {
+method: "POST",
+mode: "no-cors",
+body: JSON.stringify({ referrerId: startParam, newUserId: myUserId })
+});
+console.log("تم إرسال بيانات الإحالة بنجاح!");
+} catch (e) {
+console.error("خطأ أثناء إرسال بيانات الإحالة", e);
+}
+}
 }
 // تشغيل الوظيفة تلقائياً
 registerReferral();
@@ -477,14 +477,14 @@ window.currentReferrals = 0; window.milestonesClaimed = { 3: false, 6: false, 10
 
 let dailyRewards = [100, 200, 500, 1000, 1500, 3000, 5000];
 let refMilestones = [ 
-    {count:3, cards:5, coins: 15000}, {count:5, cards:10, coins: 30000}, 
-    {count:7, cards:15, coins: 50000}, {count:10, cards:20, coins: 80000}, 
-    {count:15, cards:30, coins: 120000}, {count:20, cards:40, coins: 180000}, 
-    {count:25, cards:50, coins: 250000}, {count:30, cards:60, coins: 300000}, 
-    {count:35, cards:70, coins: 350000}, {count:40, cards:80, coins: 400000}, 
-    {count:45, cards:90, coins: 450000}, {count:50, cards:100, coins: 500000}, 
-    {count:100, cards:200, coins: 1000000}, {count:500, cards:1000, coins: 5000000, extra: '+ 2 TON'}, 
-    {count:1000, cards:2000, coins: 10000000, extra: '+ 5 TON'} 
+{count:3, cards:5, coins: 15000}, {count:5, cards:10, coins: 30000},
+{count:7, cards:15, coins: 50000}, {count:10, cards:20, coins: 80000},
+{count:15, cards:30, coins: 120000}, {count:20, cards:40, coins: 180000},
+{count:25, cards:50, coins: 250000}, {count:30, cards:60, coins: 300000},
+{count:35, cards:70, coins: 350000}, {count:40, cards:80, coins: 400000},
+{count:45, cards:90, coins: 450000}, {count:50, cards:100, coins: 500000},
+{count:100, cards:200, coins: 1000000}, {count:500, cards:1000, coins: 5000000, extra: '+ 2 TON'},
+{count:1000, cards:2000, coins: 10000000, extra: '+ 5 TON'}
 ];
 const icons = ['🍉','🍋','🍒','🍎','🍇','💎','🍔','🔔','🎰'];
 const payTable = { '💎': 25, '🎰': 20, '🔔': 15, '🍒': 10, '🍎': 5, '🍇': 4, '🍋': 3, '🍉': 2, '🍔': 1 };
@@ -504,7 +504,7 @@ window.buildDailyGridUI(); window.updateUI();
 // إعداد TON Connect SDK الحقيقي
 // ===============================================
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-manifestUrl: 'https://ton-connect.github.io/demo-dapp/tonconnect-manifest.json'
+manifestUrl: 'https://fmc-red.vercel.app/tonconnect-manifest.json'
 });
 
 tonConnectUI.onStatusChange(wallet => {
@@ -662,23 +662,23 @@ btn.style.color = '#fff'; btn.style.borderColor = '#fff';
 btn.innerHTML = `<i class="fas fa-spinner spin-anim"></i> جاري مزامنة الإحالات...`;
 
 try {
-    let response = await fetch(`${GOOGLE_SCRIPT_URL}?user_id=${myUserId}`);
-    let data = await response.json();
-    
-    window.currentReferrals = data.real_referral_count || 0;
-    window.updateReferralProgress(window.currentReferrals);
-    
-    let successMsg = (window.fmc_lang === 'ar') ? "تم تحديث الإحالات بنجاح!" : "Referrals Synced!";
-    alert(`${successMsg}\nعدد الإحالات الحقيقي: ${window.currentReferrals}`);
+let response = await fetch(`${GOOGLE_SCRIPT_URL}?user_id=${myUserId}`);
+let data = await response.json();
+
+window.currentReferrals = data.real_referral_count || 0;
+window.updateReferralProgress(window.currentReferrals);
+
+let successMsg = (window.fmc_lang === 'ar') ? "تم تحديث الإحالات بنجاح!" : "Referrals Synced!";
+alert(`${successMsg}\nعدد الإحالات الحقيقي: ${window.currentReferrals}`);
 
 } catch (e) {
-    console.error(e);
-    alert("حدث خطأ في الاتصال بقاعدة البيانات. حاول مرة أخرى.");
+console.error(e);
+alert("حدث خطأ في الاتصال بقاعدة البيانات. حاول مرة أخرى.");
 } finally {
-    btn.disabled = false;
-    icon.classList.remove('spin-anim');
-    btn.innerHTML = `<i class="fas fa-sync-alt" id="sync-icon"></i> ${dict.check_ref}`;
-    btn.style.color = 'var(--c)'; btn.style.borderColor = 'var(--c)';
+btn.disabled = false;
+icon.classList.remove('spin-anim');
+btn.innerHTML = `<i class="fas fa-sync-alt" id="sync-icon"></i> ${dict.check_ref}`;
+btn.style.color = 'var(--c)'; btn.style.borderColor = 'var(--c)';
 }
 };
 // ===============================================
@@ -687,11 +687,12 @@ window.buildReferralList = () => {
 const container = document.getElementById('ref-list-container'); if(!container) return; container.innerHTML = '';
 refMilestones.forEach((m, index) => {
 const item = document.createElement('div'); item.className = 'ref-item-card';
-let rewardText = `Reward: <b style="color:var(--c)">+${(m.coins/1000)}K & ${m.extra || ''}</b>`; 
-let btnHTML = ''; 
-if (window.listClaimed[m.count]) btnHTML = `<button class="btn-claim-ref done-claim" disabled>✔</button>`; 
-else if (window.currentReferrals >= m.count) btnHTML = `<button class="btn-claim-ref active-claim" onclick="window.claimListReward(${index})">CLAIM</button>`; 
-else btnHTML = `<button class="btn-claim-ref" disabled>🔒</button>`; 
+let rewardText = `Reward: <b style="color:var(--c)">+${(m.coins/1000)}K🪙</b> & <b style="color:var(--gold)">+${m.cards}🎫</b>`;
+if(m.extra) rewardText += ` <span style="color:var(--g)">${m.extra}</span>`;
+let btnHTML = '';
+if(window.listClaimed[m.count]) btnHTML = `<button class="btn-claim-ref done-claim">DONE</button>`;
+else if(window.currentReferrals >= m.count) btnHTML = `<button class="btn-claim-ref active-claim" onclick="window.claimListReward(${index})">CLAIM</button>`;
+else btnHTML = `<button class="btn-claim-ref" disabled>🔒</button>`;
 item.innerHTML = `<div class="ref-item-left"><b>${m.count} Invites</b><span style="color:#94a3b8; font-size:10px;">${rewardText}</span></div>${btnHTML}`;
 container.appendChild(item);
 });
@@ -737,7 +738,8 @@ let isAvailable = (Date.now() - lastClaimTime) >= 24 * 60 * 60 * 1000 || lastCla
 
 for (let i = 1; i <= 7; i++) {
 const dayBox = document.createElement('div'); dayBox.className = 'daily-day-box';
-let bonusText = `+${dailyRewards[i-1]}🪙`; if(i === 3 || i === 6) bonusText += `<br><span style="color:var(--c); font-size:9px;">🎁 +1</span>`; dayBox.innerHTML = `${i}<br>${bonusText}`;
+let bonusText = `+${dailyRewards[i-1]}🪙`; if(i === 3 || i === 6) bonusText += `<br><span style="color:var(--c); font-size:9px;">🎁 +1</span>`;
+dayBox.innerHTML = `${dict.day_word} ${i}<br>${bonusText}`;
 
 if (i <= currentClaimedDay) { dayBox.classList.add('claimed'); dayBox.innerHTML += "<br>✔"; }
 else if (i === currentClaimedDay + 1 && isAvailable) {
@@ -780,7 +782,25 @@ let isJackpot = Math.random() < 0.005; let resultIcons = []; let totalWin = 0; l
 if (isJackpot) {
 resultIcons = Array(9).fill('🎰'); for(let i=0; i<9; i++) { cells[i].innerText = resultIcons[i]; cells[i].classList.add('jackpot-highlight'); }
 let jackpotWin = totalCost * 50; window.fmc_balance += jackpotWin; window.fmc_profit += jackpotWin;
-document.getElementById('jackpot-amount-txt').innerText = `+${jackpotWin.toLocaleString()}`; document.getElementById('jackpot-alert').style.display = 'flex'; setTimeout(() => { document.getElementById('jackpot-alert').style.display = 'none'; }, 4000); hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,215,0,0.2); color: var(--gold); border: 1px solid var(--gold); display: inline-block; flex-shrink: 0;">JACKPOT! (+${jackpotWin.toLocaleString()})</div>` + hist.innerHTML; } else { for(let i=0; i<9; i++) resultIcons.push(icons[Math.floor(Math.random()*icons.length)]); let winChance = 0.1; if(window.slotLinesActive >= 4 && window.slotLinesActive <= 6) winChance = 0.35; else if(window.slotLinesActive >= 7) winChance = 0.60; if(Math.random() < winChance) { let randomWinIcon = icons[Math.floor(Math.random()*icons.length)]; let activeLine = paylinesConfig[Math.floor(Math.random() * window.slotLinesActive)]; resultIcons[activeLine.cells[0]] = randomWinIcon; resultIcons[activeLine.cells[1]] = randomWinIcon; resultIcons[activeLine.cells[2]] = randomWinIcon; } for(let i=0; i<9; i++) cells[i].innerText = resultIcons[i]; for(let i=0; i<window.slotLinesActive; i++) { let line = paylinesConfig[i]; let i1 = resultIcons[line.cells[0]]; let i2 = resultIcons[line.cells[1]]; let i3 = resultIcons[line.cells[2]]; if(i1 === i2 && i2 === i3) { let win = window.slotLineBetAmount * payTable[i1]; totalWin += win; cells[line.cells[0]].classList.add('win-highlight'); cells[line.cells[1]].classList.add('win-highlight'); cells[line.cells[2]].classList.add('win-highlight'); hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(57,255,20,0.15); color: var(--g); border: 1px solid rgba(57,255,20,0.3); display: inline-block; flex-shrink: 0;">${i1}x3 (+${win.toLocaleString()})</div>` + hist.innerHTML; } } if(totalWin > 0) { window.fmc_balance += totalWin; window.fmc_profit += totalWin; } else { hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,255,255,0.05); color: #aaa; display: inline-block; flex-shrink: 0;">(-${totalCost.toLocaleString()})</div>` + hist.innerHTML; }
+document.getElementById('jackpot-amount-txt').innerText = `+${jackpotWin.toLocaleString()}`; document.getElementById('jackpot-alert').style.display = 'flex'; setTimeout(() => { document.getElementById('jackpot-alert').style.display = 'none'; }, 4000);
+hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,215,0,0.2); color: var(--gold); border: 1px solid var(--gold); display: inline-block; flex-shrink: 0;">JACKPOT! (+${jackpotWin.toLocaleString()})</div>` + hist.innerHTML;
+} else {
+for(let i=0; i<9; i++) resultIcons.push(icons[Math.floor(Math.random()*icons.length)]);
+let winChance = 0.1; if(window.slotLinesActive >= 4 && window.slotLinesActive <= 6) winChance = 0.35; else if(window.slotLinesActive >= 7) winChance = 0.60;
+if(Math.random() < winChance) {
+let randomWinIcon = icons[Math.floor(Math.random()*icons.length)]; let activeLine = paylinesConfig[Math.floor(Math.random() * window.slotLinesActive)];
+resultIcons[activeLine.cells[0]] = randomWinIcon; resultIcons[activeLine.cells[1]] = randomWinIcon; resultIcons[activeLine.cells[2]] = randomWinIcon;
+}
+for(let i=0; i<9; i++) cells[i].innerText = resultIcons[i];
+for(let i=0; i<window.slotLinesActive; i++) {
+let line = paylinesConfig[i]; let i1 = resultIcons[line.cells[0]]; let i2 = resultIcons[line.cells[1]]; let i3 = resultIcons[line.cells[2]];
+if(i1 === i2 && i2 === i3) {
+let win = window.slotLineBetAmount * payTable[i1]; totalWin += win;
+cells[line.cells[0]].classList.add('win-highlight'); cells[line.cells[1]].classList.add('win-highlight'); cells[line.cells[2]].classList.add('win-highlight');
+hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(57,255,20,0.15); color: var(--g); border: 1px solid rgba(57,255,20,0.3); display: inline-block; flex-shrink: 0;">${i1}x3 (+${win.toLocaleString()})</div>` + hist.innerHTML;
+} }
+if(totalWin > 0) { window.fmc_balance += totalWin; window.fmc_profit += totalWin; }
+else { hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,255,255,0.05); color: #aaa; display: inline-block; flex-shrink: 0;">(-${totalCost.toLocaleString()})</div>` + hist.innerHTML; }
 }
 window.updateUI(); window.isSlotSpinningActive = false;
 }
@@ -872,18 +892,18 @@ let flyInterval = setInterval(() => {
 mult += 0.01; text.innerText = mult.toFixed(2) + 'x';
 if(mult >= target && !hasCashedOut && target <= crashPoint) {
 hasCashedOut = true; let winAmount = bet * target; window.fmc_balance += winAmount; window.fmc_profit += (winAmount - bet); window.updateUI();
-status.style.display = 'block'; status.className = 'rocket-status-panel panel-winner'; status.innerText = `Win! ${target.toFixed(2)}x\nFlying... 👀`; hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(57,255,20,0.15); color: var(--g); border: 1px solid rgba(57,255,20,0.3); display: inline-block; flex-shrink: 0;">${target.toFixed(2)}x</div>` + hist.innerHTML; } if(mult >= crashPoint) { clearInterval(flyInterval); finishRocket(crashPoint, hasCashedOut); } }, 60); function finishRocket(finalCrash, cashedOut) { window.isRocketFlyingActive = false; flame.style.display = 'none'; rocket.classList.remove('rocket-shake'); cityBg.style.animation = 'none'; status.style.display = 'block'; if(cashedOut) { status.className = 'rocket-status-panel panel-winner'; status.innerText = `Crashed ${finalCrash.toFixed(2)}x\nYou won! 🤑`; } else { status.className = 'rocket-status-panel panel-loser'; status.innerText = `Crashed ${finalCrash.toFixed(2)}x\nLoss!`; hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,255,255,0.05); color: #aaa; display: inline-block; flex-shrink: 0;">${finalCrash.toFixed(2)}x</div>` + hist.innerHTML; }
+status.style.display = 'block'; status.className = 'rocket-status-panel panel-winner'; status.innerText = `Win! ${target.toFixed(2)}x\nFlying... 👀`; hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(57,255,20,0.15); color: var(--g); border: 1px solid rgba(57,255,20,0.3); display: inline-block; flex-shrink: 0;">${target.toFixed(2)}x</div>` + hist.innerHTML;
+}
+if(mult >= crashPoint) { clearInterval(flyInterval); finishRocket(crashPoint, hasCashedOut); } }, 60);
+function finishRocket(finalCrash, cashedOut) {
+window.isRocketFlyingActive = false; flame.style.display = 'none'; rocket.classList.remove('rocket-shake'); cityBg.style.animation = 'none'; status.style.display = 'block';
+if(cashedOut) { status.className = 'rocket-status-panel panel-winner'; status.innerText = `Crashed ${finalCrash.toFixed(2)}x\nYou won! 🤑`; }
+else { status.className = 'rocket-status-panel panel-loser'; status.innerText = `Crashed ${finalCrash.toFixed(2)}x\nLoss!`; hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,255,255,0.05); color: #aaa; display: inline-block; flex-shrink: 0;">${finalCrash.toFixed(2)}x</div>` + hist.innerHTML; }
 window.updateUI();
 }
-};window.changeLanguageEngine('ar');
-</script>
+};
 
-<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-<div id="ton-connect-button"></div>
-<script>
-    const tonConnectUI = new TonConnectUI({
-        manifestUrl: 'https://fmc-red.vercel.app/tonconnect-manifest.json',
-        buttonRootId: 'ton-connect-button'
-    });
+window.changeLanguageEngine('ar');
 </script>
-
+</body>
+</html>
