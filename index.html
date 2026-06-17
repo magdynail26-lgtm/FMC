@@ -875,17 +875,19 @@ hasCashedOut = true; let winAmount = bet * target; window.fmc_balance += winAmou
 status.style.display = 'block'; status.className = 'rocket-status-panel panel-winner'; status.innerText = `Win! ${target.toFixed(2)}x\nFlying... 👀`; hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(57,255,20,0.15); color: var(--g); border: 1px solid rgba(57,255,20,0.3); display: inline-block; flex-shrink: 0;">${target.toFixed(2)}x</div>` + hist.innerHTML; } if(mult >= crashPoint) { clearInterval(flyInterval); finishRocket(crashPoint, hasCashedOut); } }, 60); function finishRocket(finalCrash, cashedOut) { window.isRocketFlyingActive = false; flame.style.display = 'none'; rocket.classList.remove('rocket-shake'); cityBg.style.animation = 'none'; status.style.display = 'block'; if(cashedOut) { status.className = 'rocket-status-panel panel-winner'; status.innerText = `Crashed ${finalCrash.toFixed(2)}x\nYou won! 🤑`; } else { status.className = 'rocket-status-panel panel-loser'; status.innerText = `Crashed ${finalCrash.toFixed(2)}x\nLoss!`; hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,255,255,0.05); color: #aaa; display: inline-block; flex-shrink: 0;">${finalCrash.toFixed(2)}x</div>` + hist.innerHTML; }
 window.updateUI();
 }
-};
-
-window.changeLanguageEngine('ar');
+};window.changeLanguageEngine('ar');
 </script>
+
 <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 <div id="ton-connect-button"></div>
 <script>
     const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://fast-mini-cash.vercel.app/tonconnect-manifest.json',
+        manifestUrl: 'https://fmc-red.vercel.app/tonconnect-manifest.json',
         buttonRootId: 'ton-connect-button'
     });
 </script>
 </body>
 </html>
+
+
+
