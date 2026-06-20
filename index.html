@@ -73,6 +73,7 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 .arcade-info-text p { font-size: 11px; color: #94a3b8; margin-top: 2px; }
 .btn-arcade-play { width: 100%; height: 44px; border-radius: 12px; background: linear-gradient(180deg, #1f2937, #111827); border: 1px solid rgba(255,255,255,0.05); color: #fff; font-weight: 900; font-size: 14px; cursor: pointer; }
 
+/* السلوت */
 .slot-housing { background: linear-gradient(145deg, #120734, #050114); border: 3px solid #250e55; border-radius: 24px; padding: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; flex-shrink: 0; min-height: 300px; position: relative; }
 .grid-3x3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: #000; padding: 12px; border-radius: 16px; border: 1px solid var(--p); width: 100%; max-width: 320px; }
 .grid-cell { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); aspect-ratio: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 45px; position: relative; z-index: 5; transition: box-shadow 0.3s ease; }
@@ -84,6 +85,7 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 #jackpot-alert h1 { color: var(--gold); font-size: 35px; text-shadow: 0 0 20px var(--gold); margin-bottom: 10px; animation: winPulse 0.4s infinite alternate; }
 #jackpot-alert p { color: #fff; font-size: 20px; font-weight: bold; }
 
+/* الروليت */
 .lucky-header-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 20px; flex-shrink: 0;}
 .lucky-card-panel { background: rgba(10, 6, 36, 0.7); border: 1px solid rgba(0, 242, 255, 0.15); border-radius: 12px; padding: 10px; text-align: center; }
 .lucky-card-panel span { display: block; font-size: 9px; color: #94a3b8; font-weight: 900; margin-bottom: 2px; }
@@ -105,17 +107,19 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 .lucky-field { background: #000 !important; border: 1px solid #bc13fe !important; color: #bc13fe !important; padding: 0 10px; height: 44px; border-radius: 8px; font-weight: 900; text-align: center; width: 140px; font-size: 16px;}
 .lucky-field-btn { background: #bc13fe; border: none; color: white; height: 44px; padding: 0 20px; border-radius: 8px; font-weight: 900; cursor: pointer; }
 
+/* الصاروخ - تعديل الارتفاع والأرقام */
 .sky { width: 100%; height: 65vh; min-height: 400px; border-radius: 20px; position: relative; overflow: hidden; border: 2px solid var(--c); box-shadow: inset 0 0 40px rgba(0,242,255,0.3); background: #000; margin-bottom: 15px; flex-shrink: 0; }
 .cyber-city { position: absolute; inset: 0; width: 100%; height: 100%; background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=800&auto=format&fit=crop'); background-repeat: repeat-y; background-size: 100% auto; filter: brightness(0.6) contrast(1.2); background-position: 0 0; }
 @keyframes cityScroll { from { background-position: 0 0; } to { background-position: 0 1500px; } }
-#rocket-container { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); width: 90px; height: 150px; z-index: 10; display: flex; flex-direction: column; align-items: center; transition: bottom 0.2s ease-out; }
+#rocket-container { position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); width: 90px; height: 150px; z-index: 10; display: flex; flex-direction: column; align-items: center; transition: bottom 0.2s ease-out; }
 .vector-rocket { width: 100%; height: auto; filter: drop-shadow(0 0 25px rgba(0,242,255,0.9)); }
 .jet-flame { width: 24px; height: 60px; background: linear-gradient(to bottom, var(--gold), var(--red), transparent); border-radius: 50%; box-shadow: 0 0 35px var(--red); animation: flameBurn 0.04s infinite alternate; margin-top: -12px; display: none; }
 @keyframes flameBurn { 0% { transform: scaleY(0.8); } 100% { transform: scaleY(1.3); } }
-.rocket-shake { animation: violentShake 0.05s infinite alternate; bottom: 45% !important; }
+.rocket-shake { animation: violentShake 0.05s infinite alternate; bottom: 20% !important; }
 @keyframes violentShake { 0% { margin-left: 2px; } 100% { margin-left: -2px; } }
-.mult-v { position: absolute; top: 15%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 60px; font-weight: 900; z-index: 20; text-align: center; text-shadow: 0 0 25px rgba(0,0,0,1); }
+.mult-v { position: absolute; top: 35%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 60px; font-weight: 900; z-index: 20; text-align: center; text-shadow: 0 0 25px rgba(0,0,0,1); }
 .color-blue { color: var(--c) !important; text-shadow: 0 0 20px var(--c) !important; }
+
 .cockpit-panel { background: rgba(255, 255, 255, 0.03); border-radius: 16px; padding: 15px; display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 10px; align-items: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.05);}
 .side-control { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
 .side-control span { font-size: 10px; font-weight: 900; color: #cbd5e1; text-align: center; display: block; }
@@ -130,7 +134,6 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 .hist-chip.win { background: rgba(57,255,20,0.15); border: 1px solid rgba(57,255,20,0.4); color: var(--g); box-shadow: 0 0 8px rgba(57,255,20,0.2); }
 .hist-chip.circle-chip { width: 44px; height: 44px; border-radius: 50%; padding: 0; font-size: 22px;}
 
-/* المهام والمحفظة */
 .cooldown-timer { background: rgba(255,0,85,0.1); border: 1px dashed var(--red); color: var(--red); padding: 10px; text-align: center; border-radius: 12px; font-weight: bold; font-size: 14px; margin-bottom: 10px; display: none; }
 .cooldown-timer.active-timer { display: block; animation: winPulse 1s infinite alternate; }
 
@@ -199,6 +202,8 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 .btn-cancel { flex: 1; background: #222; border: 1px solid #555; color: #fff; padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 900; }
 .btn-confirm { flex: 2; background: linear-gradient(135deg, var(--g), #064e3b); border: 1px solid var(--g); color: #000; padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 900; box-shadow: 0 0 15px rgba(57,255,20,0.3); }
 .payment-status { margin-top: 15px; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 900; background: rgba(255,215,0,0.1); color: var(--gold); border: 1px dashed var(--gold); display: none; }
+
+.slot-free-ads-container { background: rgba(255,255,255,0.02); border: 1px dashed rgba(0,242,255,0.2); border-radius: 16px; padding: 15px; margin-bottom: 15px; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -323,6 +328,12 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 <div class="card" style="display:flex; justify-content:space-between; align-items:center; margin:0; padding:10px; border-color: var(--p);"><span>BET/L: <b id="sB-v-internal">50</b></span><div style="display:flex; gap:5px;"><button class="btn-luxury-plus-minus" onclick="window.changeLineBet(-50)">-</button><button class="btn-luxury-plus-minus" onclick="window.changeLineBet(50)">+</button></div></div>
 </div>
 <button id="spin-btn" class="btn-luxury-spin" onclick="window.spinSlot()">SPIN (-1 Card)</button>
+
+<div class="slot-free-ads-container">
+<p style="font-size:11px; color:#94a3b8; text-align:center; margin-bottom:10px;">كروتك خلصت؟ اتفرج على إعلانات وخد كروت!</p>
+<button id="btn-slot-ad" class="btn-check-neon" style="margin-top:0;" onclick="window.watchSlotAd()"><i class="fas fa-play-circle"></i> مشاهدة إعلان (+1 كارت)</button>
+</div>
+
 </div>
 
 <div id="room-game-greedy" class="page-room">
@@ -387,9 +398,9 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 </div>
 
 <div id="room-tasks" class="page-room">
+<h4 style="font-size:14px; font-weight:900; color:var(--c); margin-bottom:10px;">إعلانات المهام (<span id="ads-counter-text">0</span>/50)</h4>
 <div class="puzzle-container">
-<p style="font-size:12px; font-weight:900; color:var(--c);">🧩 Card Puzzle (Watch Ads = Get Cards)</p>
-<div class="puzzle-slots"><div class="puzzle-piece" id="p-piece0">1</div><div class="puzzle-piece" id="p-piece1">2</div><div class="puzzle-piece" id="p-piece2">3</div></div>
+<p style="font-size:12px; font-weight:900; color:var(--g);">شاهد 3 إعلانات للحصول على كارت 🎫</p>
 </div>
 <div class="cooldown-timer" id="cooldown-timer-display"></div>
 <div id="tasks-list-container"></div>
@@ -415,7 +426,7 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 
 <script>
 // ==========================================
-// 1. إعدادات البوت والـ WebApp
+// إعدادات البوت والـ WebApp
 // ==========================================
 const tg = window.Telegram.WebApp;
 tg.ready();
@@ -429,33 +440,18 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQGjMw11aiUx
 window.dev_ton_wallet = "UQA-nWewa9gdU0Oa7Ua__Gcwi1DdAjP6RxZ1s9OarjvEVuug";
 
 let AdController = null;
-if (window.Adsgram) {
-    AdController = window.Adsgram.init({ blockId: "35722", debug: false });
-}
+if (window.Adsgram) { AdController = window.Adsgram.init({ blockId: "35722", debug: false }); }
 
 async function registerReferral() {
     if (startParam && startParam !== myUserId.toString()) {
-        try {
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: "POST", mode: "no-cors",
-                body: JSON.stringify({ referrerId: startParam, newUserId: myUserId })
-            });
-        } catch (e) {
-            console.error(e);
-        }
+        try { await fetch(GOOGLE_SCRIPT_URL, { method: "POST", mode: "no-cors", body: JSON.stringify({ referrerId: startParam, newUserId: myUserId }) }); } catch (e) { }
     }
 }
 registerReferral();
 
 const translations = {
-ar: { balance: "الرصيد", cards: "الكروت", connect: "ربط المحفظة", nav_mining: "MINING", nav_games: "GAMES", nav_tasks: "TASKS", nav_ref: "REFERRAL", nav_wallet: "WALLET", daily_title: "🎁 مكافأة الدخول اليومية", shop_title: "🛒 متجر الكروت:", btn_upgrade: "UPGRADE MINING FARMS", casino_title: "<i class='fas fa-store'></i> VERSE CASINO STORE", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>نظام الإحالات</span>", ref_desc: "ادعُ 10 أصدقاء نشطين لضمان حصتك في الإيردروب!", copy_link: "انسخ رابط الدعوة", check_ref: "تحديث الإحالات الحقيقية", rewards_list: "🎁 قائمة المكافآت:", wallet_title: "📥 إعدادات محافظ السحب:", buy: "شراء", save: "حفظ العناوين", enter: "الدخول", back: "العودة", pay_confirm: "تأكيد وبدء الدفع", pay_req: "المبلغ المطلوب:", pay_to: "من محفظتك:", btn_cancel: "إلغاء", btn_pay: "دفع الآن", no_cards: "معكش كروت كفاية! روح اتفرج على الإعلانات (المهام) لجمع الكروت.", no_coins: "رصيدك غير كافي!", day_word: "يوم", copied: "تم نسخ الرابط!" },
-en: { balance: "Balance", cards: "Cards", connect: "Connect Wallet", nav_mining: "MINING", nav_games: "GAMES", nav_tasks: "TASKS", nav_ref: "REFERRAL", nav_wallet: "WALLET", daily_title: "🎁 Daily Reward", shop_title: "🛒 Card Shop:", btn_upgrade: "UPGRADE FARMS", casino_title: "<i class='fas fa-store'></i> VERSE CASINO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referral System</span>", ref_desc: "Invite 10 active friends to secure your airdrop!", copy_link: "Copy Invite Link", check_ref: "Sync Real Invites", rewards_list: "🎁 Rewards List:", wallet_title: "📥 Wallets:", buy: "Buy", save: "Save Details", enter: "ENTER", back: "Back", pay_confirm: "Confirm Payment", pay_req: "Amount:", pay_to: "From Your Wallet:", btn_cancel: "Cancel", btn_pay: "Pay Now", no_cards: "Not enough cards! Watch ads to get more.", no_coins: "Not enough coins!", day_word: "Day", copied: "Copied!" },
-ru: { balance: "Баланс", cards: "Карты", connect: "Кошелек", nav_mining: "МАЙНИНГ", nav_games: "ИГРЫ", nav_tasks: "ЗАДАНИЯ", nav_ref: "РЕФЕРАЛЫ", nav_wallet: "КОШЕЛЕК", daily_title: "🎁 Ежедневная награда", shop_title: "🛒 Магазин:", btn_upgrade: "УЛУЧШИТЬ ФЕРМЫ", casino_title: "<i class='fas fa-store'></i> КАЗИНО", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Реферальная система</span>", ref_desc: "Пригласите 10 друзей!", copy_link: "Скопировать", check_ref: "Проверить друзей", rewards_list: "🎁 Список наград:", wallet_title: "📥 Кошельки:", buy: "Купить", save: "Сохранить", enter: "ИГРАТЬ", back: "Назад", pay_confirm: "Оплата", pay_req: "Сумма:", pay_to: "От кошелька:", btn_cancel: "Отмена", btn_pay: "Оплатить", no_cards: "Недостаточно карт!", no_coins: "Недостаточно монет!", day_word: "День", copied: "Скопировано!" },
-es: { balance: "Saldo", cards: "Cartas", connect: "Conectar", nav_mining: "MINERÍA", nav_games: "JUEGOS", nav_tasks: "TAREAS", nav_ref: "REFERIDOS", nav_wallet: "BILLETERA", daily_title: "🎁 Recompensa Diaria", shop_title: "🛒 Tienda:", btn_upgrade: "MEJORAR GRANJAS", casino_title: "<i class='fas fa-store'></i> CASINO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Sistema de Referidos</span>", ref_desc: "¡Invita a 10 amigos!", copy_link: "Copiar Enlace", check_ref: "Verificar", rewards_list: "🎁 Recompensas:", wallet_title: "📥 Billeteras:", buy: "Comprar", save: "Guardar", enter: "ENTRAR", back: "Atrás", pay_confirm: "Pago", pay_req: "Monto:", pay_to: "Desde Billetera:", btn_cancel: "Cancelar", btn_pay: "Pagar", no_cards: "¡Sin cartas!", no_coins: "¡Sin saldo!", day_word: "Día", copied: "¡Copiado!" },
-zh: { balance: "余额", cards: "卡片", connect: "连接钱包", nav_mining: "挖矿", nav_games: "游戏", nav_tasks: "任务", nav_ref: "推荐", nav_wallet: "钱包", daily_title: "🎁 每日奖励", shop_title: "🛒 商店:", btn_upgrade: "升级农场", casino_title: "<i class='fas fa-store'></i> 赌场", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>推荐系统</span>", ref_desc: "邀请10位活跃朋友获取空投！", copy_link: "复制链接", check_ref: "检查邀请", rewards_list: "🎁 奖励列表:", wallet_title: "📥 提款钱包:", buy: "购买", save: "保存", enter: "进入", back: "返回", pay_confirm: "确认付款", pay_req: "金额:", pay_to: "从钱包:", btn_cancel: "取消", btn_pay: "支付", no_cards: "卡片不足！", no_coins: "余额不足！", day_word: "天", copied: "已复制！" },
-hi: { balance: "बैलेंस", cards: "कार्ड", connect: "वॉलेट", nav_mining: "माइनिंग", nav_games: "गेम्स", nav_tasks: "टास्क", nav_ref: "रेफरल", nav_wallet: "वॉलेट", daily_title: "🎁 दैनिक इनाम", shop_title: "🛒 दुकान:", btn_upgrade: "अपग्रेड करें", casino_title: "<i class='fas fa-store'></i> कैसीनो", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>रेफरल सिस्टम</span>", ref_desc: "10 दोस्तों को आमंत्रित करें!", copy_link: "लिंक कॉपी करें", check_ref: "चेक करें", rewards_list: "🎁 इनाम सूची:", wallet_title: "📥 वॉलेट:", buy: "खरीदें", save: "सहेजें", enter: "प्रवेश करें", back: "वापस", pay_confirm: "भुगतान", pay_req: "राशि:", pay_to: "वॉलेट से:", btn_cancel: "रद्द करें", btn_pay: "भुगतान करें", no_cards: "पर्याप्त कार्ड नहीं!", no_coins: "पर्याप्त सिक्के नहीं!", day_word: "दिन", copied: "कॉपी किया गया!" },
-ur: { balance: "بیلنس", cards: "کارڈز", connect: "والٹ", nav_mining: "مائننگ", nav_games: "گیمز", nav_tasks: "ٹاسکس", nav_ref: "ریفرل", nav_wallet: "والٹ", daily_title: "🎁 روزانہ کا انعام", shop_title: "🛒 کارڈ شاپ:", btn_upgrade: "فارمز اپ گریڈ کریں", casino_title: "<i class='fas fa-store'></i> سائبر کیسینو", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>ریفرل سسٹم</span>", ref_desc: "10 دوستوں کو مدعو کریں!", copy_link: "لنک کاپی کریں", check_ref: "چیک کریں", rewards_list: "🎁 انعامات کی فہرست:", wallet_title: "📥 والٹس:", buy: "خریدیں", save: "محفوظ کریں", enter: "داخل ہوں", back: "پیچھے", pay_confirm: "ادائیگی", pay_req: "مطلوبہ رقم:", pay_to: "والٹ سے:", btn_cancel: "منسوخ کریں", btn_pay: "ادائیگی کریں", no_cards: "کافی کارڈ نہیں!", no_coins: "کافی سکے نہیں!", day_word: "دن", copied: "کاپی ہو گیا!" },
-tr: { balance: "Bakiye", cards: "Kartlar", connect: "Cüzdan", nav_mining: "MADENCİLİK", nav_games: "OYUNLAR", nav_tasks: "GÖREVLER", nav_ref: "REFERANS", nav_wallet: "CÜZDAN", daily_title: "🎁 Günlük Ödül", shop_title: "🛒 Mağaza:", btn_upgrade: "YÜKSELT", casino_title: "<i class='fas fa-store'></i> CASİNO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referans Sistemi</span>", ref_desc: "10 arkadaşınızı davet edin!", copy_link: "Kopyala", check_ref: "Kontrol Et", rewards_list: "🎁 Ödül Listesi:", wallet_title: "📥 Cüzdanlar:", buy: "Satın Al", save: "Kaydet", enter: "GİRİŞ", back: "Geri", pay_confirm: "Ödemeyi Onayla", pay_req: "Tutar:", pay_to: "Cüzdandan:", btn_cancel: "İptal", btn_pay: "Öde", no_cards: "Yeterli kart yok!", no_coins: "Yeterli bakiye yok!", day_word: "Gün", copied: "Kopyalandı!" }
+ar: { balance: "الرصيد", cards: "الكروت", connect: "ربط المحفظة", nav_mining: "MINING", nav_games: "GAMES", nav_tasks: "TASKS", nav_ref: "REFERRAL", nav_wallet: "WALLET", daily_title: "🎁 مكافأة الدخول اليومية", shop_title: "🛒 متجر الكروت:", btn_upgrade: "UPGRADE MINING FARMS", casino_title: "<i class='fas fa-store'></i> VERSE CASINO STORE", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>نظام الإحالات</span>", ref_desc: "ادعُ 10 أصدقاء نشطين لضمان حصتك في الإيردروب!", copy_link: "انسخ رابط الدعوة", check_ref: "تحديث الإحالات الحقيقية", rewards_list: "🎁 قائمة المكافآت:", wallet_title: "📥 إعدادات محافظ السحب:", buy: "شراء", save: "حفظ العناوين", enter: "الدخول", back: "العودة", pay_confirm: "تأكيد وبدء الدفع", pay_req: "المبلغ المطلوب:", pay_to: "من محفظتك:", btn_cancel: "إلغاء", btn_pay: "دفع الآن", no_cards: "معكش كروت كفاية!", no_coins: "رصيدك غير كافي!", day_word: "يوم", copied: "تم نسخ الرابط!" },
+en: { balance: "Balance", cards: "Cards", connect: "Connect Wallet", nav_mining: "MINING", nav_games: "GAMES", nav_tasks: "TASKS", nav_ref: "REFERRAL", nav_wallet: "WALLET", daily_title: "🎁 Daily Reward", shop_title: "🛒 Card Shop:", btn_upgrade: "UPGRADE FARMS", casino_title: "<i class='fas fa-store'></i> VERSE CASINO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referral System</span>", ref_desc: "Invite 10 active friends to secure your airdrop!", copy_link: "Copy Invite Link", check_ref: "Sync Real Invites", rewards_list: "🎁 Rewards List:", wallet_title: "📥 Wallets:", buy: "Buy", save: "Save Details", enter: "ENTER", back: "Back", pay_confirm: "Confirm Payment", pay_req: "Amount:", pay_to: "From Your Wallet:", btn_cancel: "Cancel", btn_pay: "Pay Now", no_cards: "Not enough cards!", no_coins: "Not enough coins!", day_word: "Day", copied: "Copied!" }
 };
 
 window.fmc_lang = 'ar'; window.fmc_balance = 0; window.fmc_cards = 0; window.fmc_profit = 0;
@@ -477,10 +473,7 @@ let refMilestones = [
 {count:7, cards:15, coins: 50000}, {count:10, cards:20, coins: 80000},
 {count:15, cards:30, coins: 120000}, {count:20, cards:40, coins: 180000},
 {count:25, cards:50, coins: 250000}, {count:30, cards:60, coins: 300000},
-{count:35, cards:70, coins: 350000}, {count:40, cards:80, coins: 400000},
-{count:45, cards:90, coins: 450000}, {count:50, cards:100, coins: 500000},
-{count:100, cards:200, coins: 1000000}, {count:500, cards:1000, coins: 5000000, extra: '+ 2 TON'},
-{count:1000, cards:2000, coins: 10000000, extra: '+ 5 TON'}
+{count:100, cards:200, coins: 1000000}, {count:500, cards:1000, coins: 5000000, extra: '+ 2 TON'}
 ];
 const icons = ['🍉','🍋','🍒','🍎','🍇','💎','🍔','🔔','🎰'];
 const payTable = { '💎': 25, '🎰': 20, '🔔': 15, '🍒': 10, '🍎': 5, '🍇': 4, '🍋': 3, '🍉': 2, '🍔': 1 };
@@ -497,26 +490,23 @@ window.buildDailyGridUI(); window.updateUI();
 };
 
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({ manifestUrl: 'https://fmc-red.vercel.app/tonconnect-manifest.json' });
-
 tonConnectUI.onStatusChange(wallet => {
-const btn = document.getElementById('ton-connect-btn');
-const txt = document.getElementById('connect-text');
+const btn = document.getElementById('ton-connect-btn'); const txt = document.getElementById('connect-text');
 if (wallet) {
 window.isWalletConnected = true; btn.classList.add('connected');
-const addr = wallet.account.address; const shortAddr = addr.substring(0,4) + '...' + addr.substring(addr.length-4);
-txt.innerText = shortAddr + " ✔";
+const addr = wallet.account.address; txt.innerText = addr.substring(0,4) + '...' + addr.substring(addr.length-4) + " ✔";
 } else {
 window.isWalletConnected = false; btn.classList.remove('connected');
-let dict = translations[window.fmc_lang] || translations['en']; txt.innerText = dict.connect;
+txt.innerText = (translations[window.fmc_lang] || translations['en']).connect;
 }
 });
 
-window.connectTonWallet = async () => { if (tonConnectUI.connected) { await tonConnectUI.disconnect(); } else { await tonConnectUI.openModal(); } };
+window.connectTonWallet = async () => { if (tonConnectUI.connected) await tonConnectUI.disconnect(); else await tonConnectUI.openModal(); };
 
 window.openPaymentModal = (amount, callback) => {
 if(!tonConnectUI.connected) { tonConnectUI.openModal(); return; }
 document.getElementById('pay-amount-text').innerText = amount + " TON";
-try { let userAddress = tonConnectUI.account.address; document.getElementById('pay-wallet-text').innerText = userAddress.substring(0,4) + '...' + userAddress.substring(userAddress.length-4); } catch(e) {}
+try { let u = tonConnectUI.account.address; document.getElementById('pay-wallet-text').innerText = u.substring(0,4) + '...' + u.substring(u.length-4); } catch(e) {}
 let statusEl = document.getElementById('payment-status');
 statusEl.style.display = 'block'; statusEl.style.background = 'rgba(255,215,0,0.1)'; statusEl.style.color = 'var(--gold)'; statusEl.style.borderColor = 'var(--gold)'; statusEl.innerHTML = '⚠️ يرجى تأكيد المعاملة من محفظتك...';
 document.getElementById('payment-actions-row').style.display = 'flex'; document.getElementById('custom-payment-modal').style.display = 'flex';
@@ -540,9 +530,6 @@ window.buyCardsWithTon = (amount, tonCost) => { window.openPaymentModal(tonCost,
 window.buyCardsWithCoins = (amount, cost) => { let dict = translations[window.fmc_lang] || translations['en']; if (window.fmc_balance < cost) { alert(dict.no_coins); return; } window.fmc_balance -= cost; window.fmc_cards += amount; window.updateUI(); };
 window.tapClickerMega = () => { if(window.currentEnergy >= 1) { window.currentEnergy--; window.fmc_balance += 10; window.updateUI(); } };
 
-setInterval(() => { if(window.autoMiningRate > 0) { window.fmc_balance += window.autoMiningRate; window.updateUI(); } }, 1000);
-setInterval(() => { if(window.currentEnergy < 500) { window.currentEnergy += 1; window.updateUI(); } }, 1000);
-
 window.switchMainTab = (tab) => {
 document.querySelectorAll('.page-room').forEach(p => p.classList.remove('active')); document.querySelectorAll('.nav-i').forEach(n => n.classList.remove('active'));
 let targetRoom = document.getElementById('room-' + tab); if(targetRoom) targetRoom.classList.add('active');
@@ -559,7 +546,7 @@ window.changeRocketMult = (v) => { window.rocketTargetMultiplier = Math.max(1.5,
 window.enterGame = (game) => {
 document.querySelectorAll('.page-room').forEach(p => p.classList.remove('active'));
 let rG = document.getElementById('room-game-' + game); if(rG) rG.classList.add('active');
-if(game=='slot') { for(let i=0; i<9; i++) document.getElementById('c'+i).innerText = icons[Math.floor(Math.random()*icons.length)]; window.updateUI(); }
+if(game=='slot') { for(let i=0; i<9; i++) document.getElementById('c'+i).innerText = icons[Math.floor(Math.random()*icons.length)]; window.updateUI(); window.checkAdGlobalState(); }
 if(game=='greedy') window.bootLuckyArenaEngine();
 };
 window.exitToMenu = () => window.switchMainTab('games');
@@ -612,91 +599,137 @@ window.updateUI(); window.buildReferralList();
 };
 
 // ==========================================================
-// قسم المهام والإعلانات المدمجة + راحة 10 دقائق
+// النظام الموحد للـ 50 إعلان وراحة 10 دقائق
 // ==========================================================
+window.checkAdGlobalState = () => {
+    let dateStr = new Date().toDateString();
+    if(localStorage.getItem('fmc_ads_date') !== dateStr) {
+        localStorage.setItem('fmc_ads_date', dateStr);
+        localStorage.setItem('fmc_ads_today', '0');
+        localStorage.setItem('fmc_ads_batch', '0');
+        localStorage.setItem('fmc_ad_cooldown', '0');
+    }
+
+    let todayAds = parseInt(localStorage.getItem('fmc_ads_today') || '0');
+    let cooldown = parseInt(localStorage.getItem('fmc_ad_cooldown') || '0');
+    let now = Date.now();
+    
+    // تحديث الواجهة للمهام
+    if(document.getElementById('ads-counter-text')) document.getElementById('ads-counter-text').innerText = todayAds;
+    
+    let isLimitReached = todayAds >= 50;
+    let isCooldown = now < cooldown;
+    let msg = "";
+
+    if (isLimitReached) msg = "🔴 استنفدت الـ 50 إعلان اليوم. عد غداً!";
+    else if (isCooldown) {
+        let remaining = Math.ceil((cooldown - now) / 1000);
+        let m = Math.floor(remaining / 60); let s = remaining % 60;
+        msg = `⏳ راحة الإعلانات: ${m}:${s < 10 ? '0':''}${s} دقيقة`;
+    }
+
+    // تطبيق الحالة على زر السلوت
+    let slotBtn = document.getElementById('btn-slot-ad');
+    let slotCdText = document.getElementById('slot-ad-cooldown');
+    if (slotBtn && slotCdText) {
+        if (isLimitReached || isCooldown) {
+            slotBtn.style.display = 'none';
+            slotCdText.style.display = 'block';
+            slotCdText.innerText = msg;
+        } else {
+            slotBtn.style.display = 'flex';
+            slotCdText.style.display = 'none';
+            slotBtn.innerHTML = `<i class="fas fa-play-circle"></i> مشاهدة إعلان (+1 كارت)`;
+        }
+    }
+
+    // تطبيق الحالة على المهام
+    let timerEl = document.getElementById('cooldown-timer-display');
+    if (timerEl) {
+        if (isLimitReached || isCooldown) {
+            timerEl.classList.add('active-timer');
+            timerEl.innerText = msg;
+        } else {
+            timerEl.classList.remove('active-timer');
+            timerEl.style.display = 'none';
+        }
+    }
+    
+    return { available: !(isLimitReached || isCooldown) };
+};
+
+window.processAdSuccess = () => {
+    let todayAds = parseInt(localStorage.getItem('fmc_ads_today') || '0') + 1;
+    let batchAds = parseInt(localStorage.getItem('fmc_ads_batch') || '0') + 1;
+    localStorage.setItem('fmc_ads_today', todayAds.toString());
+
+    if(batchAds >= 6) {
+        localStorage.setItem('fmc_ad_cooldown', (Date.now() + 10 * 60 * 1000).toString());
+        localStorage.setItem('fmc_ads_batch', '0');
+    } else {
+        localStorage.setItem('fmc_ads_batch', batchAds.toString());
+    }
+    
+    // هدية كل 3 إعلانات مجمعة
+    if (todayAds % 3 === 0) { window.fmc_cards += 1; }
+    window.updateUI();
+    window.checkAdGlobalState();
+    if(document.getElementById('room-tasks').classList.contains('active')) window.buildTasksList();
+};
+
 window.buildTasksList = () => {
 const container = document.getElementById('tasks-list-container'); if(!container) return; container.innerHTML = '';
-
-let cooldownTime = parseInt(localStorage.getItem('fmc_ad_cooldown') || '0');
-let isCooldown = Date.now() < cooldownTime;
-let currentTasks = parseInt(localStorage.getItem('fmc_completed_tasks') || '0');
-let puzzleIndex = currentTasks % 3;
-
-for(let i=0; i<3; i++) {
-    let p = document.getElementById('p-piece' + i);
-    if(p) { p.style.background = i < puzzleIndex ? 'var(--g)' : '#040114'; p.style.color = i < puzzleIndex ? '#000' : '#444'; }
-}
+let todayAds = parseInt(localStorage.getItem('fmc_ads_today') || '0');
+let state = window.checkAdGlobalState();
 
 for (let i = 1; i <= 50; i++) {
     const card = document.createElement('div'); card.className = 'task-card';
-    let isDone = i <= currentTasks;
+    let isDone = i <= todayAds;
     let btnHTML = '';
     
     if(isDone) {
         btnHTML = `<button class="btn-watch" disabled style="background:#222 !important;color:#777 !important;">✔ Done</button>`;
-    } else if(isCooldown) {
-        btnHTML = `<button class="btn-watch" disabled style="background:#555 !important;">⏳ Cooldown</button>`;
+    } else if(!state.available) {
+        btnHTML = `<button class="btn-watch" disabled style="background:#555 !important;">⏳ Wait</button>`;
     } else {
-        btnHTML = `<button class="btn-watch" id="tk-btn-${i}" onclick="window.watchAdTask(${i})">Watch 📺</button>`;
+        btnHTML = `<button class="btn-watch" id="tk-btn-${i}" onclick="window.watchGlobalAd('task', ${i})">Watch 📺</button>`;
     }
-
-    card.innerHTML = `<div class="task-left"><h4>Sponsor Ad #${i}</h4><p>+500 Coins (3 Ads = 1 Card)</p></div>${btnHTML}`;
+    card.innerHTML = `<div class="task-left"><h4>Sponsor Ad #${i}</h4><p>+500 Coins</p></div>${btnHTML}`;
     container.appendChild(card); 
 }
 };
 
-window.watchAdTask = (num) => {
-if (!AdController) { alert("نظام الإعلانات غير جاهز بعد."); return; }
-const btn = document.getElementById('tk-btn-' + num);
-btn.innerText = "Loading..."; btn.disabled = true;
+window.watchGlobalAd = (source, num = 0) => {
+    let state = window.checkAdGlobalState();
+    if(!state.available) { alert("الإعلانات غير متاحة الآن."); return; }
+    if (!AdController) { alert("نظام الإعلانات غير جاهز."); return; }
+    
+    let btn = source === 'slot' ? document.getElementById('btn-slot-ad') : document.getElementById('tk-btn-' + num);
+    if(btn) { btn.innerText = "Loading..."; btn.disabled = true; }
 
-AdController.show().then((result) => {
-    let currentTasks = parseInt(localStorage.getItem('fmc_completed_tasks') || '0');
-    currentTasks++;
-    localStorage.setItem('fmc_completed_tasks', currentTasks.toString());
-    
-    let adsInBatch = parseInt(localStorage.getItem('fmc_ads_batch') || '0');
-    adsInBatch++;
-    window.fmc_balance += 500;
-    
-    if(adsInBatch >= 3) {
-        window.fmc_cards += 1;
-        // قفل الإعلانات لمدة 10 دقائق (600,000 مللي ثانية)
-        localStorage.setItem('fmc_ad_cooldown', (Date.now() + 10 * 60 * 1000).toString());
-        localStorage.setItem('fmc_ads_batch', '0');
-    } else {
-        localStorage.setItem('fmc_ads_batch', adsInBatch.toString());
-    }
-    
-    window.updateUI();
-    window.buildTasksList(); 
-}).catch((result) => {
-    btn.innerText = "Watch 📺"; btn.disabled = false;
-    alert("لم تكمل مشاهدة الإعلان للحصول على المكافأة.");
-});
+    AdController.show().then(() => {
+        if(source === 'task') window.fmc_balance += 500;
+        else if (source === 'slot') window.fmc_cards += 1; // السلوت بيدي كارت فوري
+        
+        window.processAdSuccess();
+    }).catch(() => {
+        if(btn) { 
+            btn.innerHTML = source === 'slot' ? `<i class="fas fa-play-circle"></i> مشاهدة إعلان (+1 كارت)` : "Watch 📺"; 
+            btn.disabled = false; 
+        }
+        alert("يجب مشاهدة الإعلان للنهاية.");
+    });
 };
+window.watchSlotAd = () => window.watchGlobalAd('slot');
 
-// مؤقت الراحة الإجبارية
 setInterval(() => {
-let cooldownTime = parseInt(localStorage.getItem('fmc_ad_cooldown') || '0');
-let timerEl = document.getElementById('cooldown-timer-display');
-if(cooldownTime > 0 && Date.now() < cooldownTime) {
-    let remaining = Math.ceil((cooldownTime - Date.now()) / 1000);
-    let mins = Math.floor(remaining / 60);
-    let secs = remaining % 60;
-    if(timerEl) {
-        timerEl.classList.add('active-timer');
-        timerEl.innerText = `⏳ راحة إجبارية للإعلانات: ${mins}:${secs < 10 ? '0':''}${secs} دقائق`;
-    }
-} else if (cooldownTime > 0 && Date.now() >= cooldownTime) {
-    localStorage.setItem('fmc_ad_cooldown', '0');
-    if(timerEl) { timerEl.classList.remove('active-timer'); timerEl.style.display = 'none'; }
-    if(document.getElementById('room-tasks').classList.contains('active')) window.buildTasksList();
-}
+    window.checkAdGlobalState();
+    if(window.autoMiningRate > 0) { window.fmc_balance += window.autoMiningRate; window.updateUI(); }
+    if(window.currentEnergy < 500) { window.currentEnergy += 1; window.updateUI(); }
 }, 1000);
 
 // ==========================================================
-// إعلانات الدخول اليومي المتصاعدة ومعاقبة الغياب
+// إعلانات الدخول اليومي المتصاعدة
 // ==========================================================
 window.toggleGiftModal = () => {
 let m = document.getElementById('daily-login-hub');
@@ -709,11 +742,7 @@ let dict = translations[window.fmc_lang] || translations['en'];
 
 let lastClaimTime = parseInt(localStorage.getItem('fmc_v3_claim_time') || '0');
 let now = Date.now();
-
-// نظام معاقبة الغياب (إذا مر 48 ساعة يعود لليوم الأول)
-if (lastClaimTime !== 0 && (now - lastClaimTime) > (48 * 60 * 60 * 1000)) {
-    localStorage.setItem('fmc_v3_claimed_day', '0');
-}
+if (lastClaimTime !== 0 && (now - lastClaimTime) > (48 * 60 * 60 * 1000)) { localStorage.setItem('fmc_v3_claimed_day', '0'); }
 
 let currentClaimedDay = parseInt(localStorage.getItem('fmc_v3_claimed_day') || '0');
 let isAvailable = (now - lastClaimTime) >= (24 * 60 * 60 * 1000) || lastClaimTime === 0;
@@ -732,18 +761,12 @@ if (i <= currentClaimedDay) {
     dayBox.onclick = () => {
         if (!AdController) { alert("الإعلانات غير جاهزة، تأكد من اتصالك."); return; }
         dayBox.innerHTML = "Loading..."; dayBox.style.pointerEvents = 'none';
-        
         AdController.show().then(() => {
-            window.fmc_balance += config.coins; 
-            window.fmc_cards += config.cards;
-            localStorage.setItem('fmc_v3_claimed_day', i.toString()); 
-            localStorage.setItem('fmc_v3_claim_time', Date.now().toString());
-            alert("🎉 تم استلام مكافأة اليوم بنجاح!"); 
-            window.buildDailyGridUI(); window.updateUI(); 
+            window.fmc_balance += config.coins; window.fmc_cards += config.cards;
+            localStorage.setItem('fmc_v3_claimed_day', i.toString()); localStorage.setItem('fmc_v3_claim_time', Date.now().toString());
+            alert("🎉 تم استلام مكافأة اليوم بنجاح!"); window.buildDailyGridUI(); window.updateUI(); 
         }).catch(() => {
-            dayBox.innerHTML = `${dict.day_word} ${i}<br>${bonusText}<br>📺 مشاهدة`;
-            dayBox.style.pointerEvents = 'auto';
-            alert("يجب مشاهدة الإعلان للنهاية لاستلام المكافأة.");
+            dayBox.innerHTML = `${dict.day_word} ${i}<br>${bonusText}<br>📺 مشاهدة`; dayBox.style.pointerEvents = 'auto';
         });
     }; 
     dayBox.classList.add('active-day');
@@ -763,6 +786,9 @@ if(document.getElementById('lucky-wallet-v')) document.getElementById('lucky-wal
 if(document.getElementById('lucky-profit-v')) document.getElementById('lucky-profit-v').innerText = window.fmc_profit.toLocaleString();
 };
 
+// ==========================================================
+// السلوت والجاك بوت اليومي
+// ==========================================================
 window.spinSlot = () => {
 if(window.isSlotSpinningActive) return;
 let dict = translations[window.fmc_lang] || translations['en'];
@@ -773,48 +799,62 @@ if(window.fmc_balance < totalCost) { alert(dict.no_coins); return; }
 window.fmc_cards -= 1; window.fmc_balance -= totalCost; window.updateUI(); window.isSlotSpinningActive = true;
 let cells = []; for(let i=0; i<9; i++) { let el = document.getElementById('c'+i); el.classList.remove('win-highlight', 'jackpot-highlight'); cells.push(el); }
 let spinCount = 0;
+
 let spinInterval = setInterval(() => {
 for(let i=0; i<9; i++) cells[i].innerText = icons[Math.floor(Math.random()*icons.length)];
 spinCount++;
 if(spinCount > 15) {
 clearInterval(spinInterval);
-let isJackpot = Math.random() < 0.005; let resultIcons = []; let totalWin = 0; let hist = document.getElementById('slot-hist-bar');
+
+// منطق الجاك بوت اليومي العشوائي
+let lastJackpot = parseInt(localStorage.getItem('fmc_last_jackpot') || '0');
+let canHitJackpot = (Date.now() - lastJackpot) > 24 * 60 * 60 * 1000;
+let isJackpot = canHitJackpot && (Math.random() < 0.05); // فرصة 5% إذا مر 24 ساعة
+
+let resultIcons = []; let totalWin = 0; let hist = document.getElementById('slot-hist-bar');
+
 if (isJackpot) {
-resultIcons = Array(9).fill('🎰'); for(let i=0; i<9; i++) { cells[i].innerText = resultIcons[i]; cells[i].classList.add('jackpot-highlight'); }
-let jackpotWin = totalCost * 50; window.fmc_balance += jackpotWin; window.fmc_profit += jackpotWin;
-document.getElementById('jackpot-amount-txt').innerText = `+${jackpotWin.toLocaleString()}`; document.getElementById('jackpot-alert').style.display = 'flex'; setTimeout(() => { document.getElementById('jackpot-alert').style.display = 'none'; }, 4000);
-hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,215,0,0.2); color: var(--gold); border: 1px solid var(--gold); display: inline-block; flex-shrink: 0;">JACKPOT! (+${jackpotWin.toLocaleString()})</div>` + hist.innerHTML;
+    localStorage.setItem('fmc_last_jackpot', Date.now().toString());
+    resultIcons = Array(9).fill('🎰'); for(let i=0; i<9; i++) { cells[i].innerText = resultIcons[i]; cells[i].classList.add('jackpot-highlight'); }
+    let jackpotWin = totalCost * 200; // نسبة وتناسب للرهان (مضاعف 200x)
+    window.fmc_balance += jackpotWin; window.fmc_profit += jackpotWin;
+    document.getElementById('jackpot-amount-txt').innerText = `+${jackpotWin.toLocaleString()}`; document.getElementById('jackpot-alert').style.display = 'flex'; setTimeout(() => { document.getElementById('jackpot-alert').style.display = 'none'; }, 4000);
+    hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,215,0,0.2); color: var(--gold); border: 1px solid var(--gold); display: inline-block; flex-shrink: 0;">DAILY JACKPOT! (+${jackpotWin.toLocaleString()})</div>` + hist.innerHTML;
 } else {
-for(let i=0; i<9; i++) resultIcons.push(icons[Math.floor(Math.random()*icons.length)]);
-let winChance = 0.1; if(window.slotLinesActive >= 4 && window.slotLinesActive <= 6) winChance = 0.35; else if(window.slotLinesActive >= 7) winChance = 0.60;
-if(Math.random() < winChance) {
-let randomWinIcon = icons[Math.floor(Math.random()*icons.length)]; let activeLine = paylinesConfig[Math.floor(Math.random() * window.slotLinesActive)];
-resultIcons[activeLine.cells[0]] = randomWinIcon; resultIcons[activeLine.cells[1]] = randomWinIcon; resultIcons[activeLine.cells[2]] = randomWinIcon;
-}
-for(let i=0; i<9; i++) cells[i].innerText = resultIcons[i];
-for(let i=0; i<window.slotLinesActive; i++) {
-let line = paylinesConfig[i]; let i1 = resultIcons[line.cells[0]]; let i2 = resultIcons[line.cells[1]]; let i3 = resultIcons[line.cells[2]];
-if(i1 === i2 && i2 === i3) {
-let win = window.slotLineBetAmount * payTable[i1]; totalWin += win;
-cells[line.cells[0]].classList.add('win-highlight'); cells[line.cells[1]].classList.add('win-highlight'); cells[line.cells[2]].classList.add('win-highlight');
-hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(57,255,20,0.15); color: var(--g); border: 1px solid rgba(57,255,20,0.3); display: inline-block; flex-shrink: 0;">${i1}x3 (+${win.toLocaleString()})</div>` + hist.innerHTML;
-} }
-if(totalWin > 0) { window.fmc_balance += totalWin; window.fmc_profit += totalWin; }
-else { hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,255,255,0.05); color: #aaa; display: inline-block; flex-shrink: 0;">(-${totalCost.toLocaleString()})</div>` + hist.innerHTML; }
+    for(let i=0; i<9; i++) resultIcons.push(icons[Math.floor(Math.random()*icons.length)]);
+    let winChance = 0.1; if(window.slotLinesActive >= 4 && window.slotLinesActive <= 6) winChance = 0.35; else if(window.slotLinesActive >= 7) winChance = 0.60;
+    if(Math.random() < winChance) {
+        let randomWinIcon = icons[Math.floor(Math.random()*icons.length)]; let activeLine = paylinesConfig[Math.floor(Math.random() * window.slotLinesActive)];
+        resultIcons[activeLine.cells[0]] = randomWinIcon; resultIcons[activeLine.cells[1]] = randomWinIcon; resultIcons[activeLine.cells[2]] = randomWinIcon;
+    }
+    for(let i=0; i<9; i++) cells[i].innerText = resultIcons[i];
+    for(let i=0; i<window.slotLinesActive; i++) {
+        let line = paylinesConfig[i]; let i1 = resultIcons[line.cells[0]]; let i2 = resultIcons[line.cells[1]]; let i3 = resultIcons[line.cells[2]];
+        if(i1 === i2 && i2 === i3) {
+            let win = window.slotLineBetAmount * payTable[i1]; totalWin += win;
+            cells[line.cells[0]].classList.add('win-highlight'); cells[line.cells[1]].classList.add('win-highlight'); cells[line.cells[2]].classList.add('win-highlight');
+            hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(57,255,20,0.15); color: var(--g); border: 1px solid rgba(57,255,20,0.3); display: inline-block; flex-shrink: 0;">${i1}x3 (+${win.toLocaleString()})</div>` + hist.innerHTML;
+        } 
+    }
+    if(totalWin > 0) { window.fmc_balance += totalWin; window.fmc_profit += totalWin; }
+    else { hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,255,255,0.05); color: #aaa; display: inline-block; flex-shrink: 0;">(-${totalCost.toLocaleString()})</div>` + hist.innerHTML; }
 }
 window.updateUI(); window.isSlotSpinningActive = false;
 }
 }, 50);
 };
 
+// ==========================================================
+// الروليت (الستيك فوق) و جاك بوت السلطة
+// ==========================================================
 window.luckyItemsConfig = [
-{ id: 0, icon: '🐟', mult: 10, type: 'meat', prob: 0.05, degree: -90 },
+{ id: 0, icon: '🥩', mult: 25, type: 'meat', prob: 0.02, degree: -90 }, // الستيك في النص فوق
 { id: 1, icon: '🍅', mult: 5, type: 'veg', prob: 0.20, degree: -45 },
 { id: 2, icon: '🍤', mult: 15, type: 'meat', prob: 0.05, degree: 0 },
 { id: 3, icon: '🥕', mult: 5, type: 'veg', prob: 0.20, degree: 45 },
 { id: 4, icon: '🐄', mult: 20, type: 'meat', prob: 0.04, degree: 90 },
 { id: 5, icon: '🫑', mult: 5, type: 'veg', prob: 0.20, degree: 135 },
-{ id: 6, icon: '🥩', mult: 25, type: 'meat', prob: 0.02, degree: 180 },
+{ id: 6, icon: '🐟', mult: 10, type: 'meat', prob: 0.05, degree: 180 }, // السمكة تحت
 { id: 7, icon: '🌽', mult: 5, type: 'veg', prob: 0.24, degree: 225 } 
 ];
 
@@ -854,20 +894,46 @@ let counter = document.getElementById('bet-node-' + nodeId); if(counter) { count
 
 window.drawLuckyWinner = () => {
 window.isLuckyWheelDrawing = true;
+let isSaladJackpot = Math.random() < 0.05; // 5% chance for Salad Jackpot
 let rand = Math.random(); let cumulative = 0; let winnerItem = window.luckyItemsConfig[0];
 for(let item of window.luckyItemsConfig) { cumulative += item.prob; if(rand <= cumulative) { winnerItem = item; break; } }
 let nodes = document.querySelectorAll('.lucky-item-node'); let spinCount = 0; let maxSpins = 30 + Math.floor(Math.random() * 8); let currentIndex = 0;
+
 let spinInterval = setInterval(() => {
 nodes.forEach(n => n.classList.remove('roulette-active')); nodes[currentIndex % nodes.length].classList.add('roulette-active'); currentIndex++; spinCount++;
 if(spinCount >= maxSpins) {
 clearInterval(spinInterval); nodes.forEach(n => n.classList.remove('roulette-active'));
-let winNode = document.getElementById('lucky-node-' + winnerItem.id); if(winNode) winNode.classList.add('roulette-active');
 let hist = document.getElementById('hist'); let winAmount = 0;
-if(window.luckyLivePicks[winnerItem.id]) { winAmount = window.luckyLivePicks[winnerItem.id] * winnerItem.mult; window.fmc_balance += winAmount; window.fmc_profit += winAmount; }
 let popup = document.getElementById('greedy-winner-popup'); let pTitle = document.getElementById('gw-title'); let pIcon = document.getElementById('gw-icon'); let pAmt = document.getElementById('gw-amt');
-pIcon.innerText = winnerItem.icon;
-if(winAmount > 0) { pTitle.innerText = "Winner! 🎉"; pTitle.style.color = "var(--g)"; pAmt.innerText = `+${winAmount}`; pAmt.style.color = "var(--g)"; } else { pTitle.innerText = "Lose 😔"; pTitle.style.color = "var(--red)"; pAmt.innerText = ""; } popup.style.display = "flex"; hist.innerHTML = `<div class="hist-chip circle-chip">${winnerItem.icon}</div>` + hist.innerHTML;
-setTimeout(() => { popup.style.display = "none"; window.luckyLivePicks = {}; document.querySelectorAll('.bet-counter').forEach(c => { c.style.display = 'none'; c.innerText = '0'; }); window.luckyTimerCountdown = 30; window.isLuckyWheelDrawing = false; if(winNode) winNode.classList.remove('roulette-active'); window.updateUI(); }, 3000);
+
+if (isSaladJackpot) {
+    // جاك بوت السلطة - إضاءة الكل ومكسب على كل الرهانات
+    nodes.forEach(n => n.classList.add('roulette-active'));
+    for (let pickId in window.luckyLivePicks) {
+        let pickedItem = window.luckyItemsConfig.find(i => i.id == pickId);
+        winAmount += window.luckyLivePicks[pickId] * pickedItem.mult;
+    }
+    pIcon.innerText = "🥗";
+    if(winAmount > 0) { 
+        window.fmc_balance += winAmount; window.fmc_profit += winAmount;
+        pTitle.innerText = "🥗 سلطة! الكل كسبان 🎉"; pTitle.style.color = "var(--g)"; 
+        pAmt.innerText = `+${winAmount}`; pAmt.style.color = "var(--g)"; 
+    } else { 
+        pTitle.innerText = "🥗 سلطة.. بس مراهنتش!"; pTitle.style.color = "var(--gold)"; pAmt.innerText = ""; 
+    }
+    hist.innerHTML = `<div class="hist-chip circle-chip">🥗</div>` + hist.innerHTML;
+} else {
+    // اللعب العادي
+    let winNode = document.getElementById('lucky-node-' + winnerItem.id); if(winNode) winNode.classList.add('roulette-active');
+    if(window.luckyLivePicks[winnerItem.id]) { winAmount = window.luckyLivePicks[winnerItem.id] * winnerItem.mult; window.fmc_balance += winAmount; window.fmc_profit += winAmount; }
+    pIcon.innerText = winnerItem.icon;
+    if(winAmount > 0) { pTitle.innerText = "Winner! 🎉"; pTitle.style.color = "var(--g)"; pAmt.innerText = `+${winAmount}`; pAmt.style.color = "var(--g)"; } 
+    else { pTitle.innerText = "Lose 😔"; pTitle.style.color = "var(--red)"; pAmt.innerText = ""; } 
+    hist.innerHTML = `<div class="hist-chip circle-chip">${winnerItem.icon}</div>` + hist.innerHTML;
+}
+
+popup.style.display = "flex"; 
+setTimeout(() => { popup.style.display = "none"; window.luckyLivePicks = {}; document.querySelectorAll('.bet-counter').forEach(c => { c.style.display = 'none'; c.innerText = '0'; }); window.luckyTimerCountdown = 30; window.isLuckyWheelDrawing = false; nodes.forEach(n => n.classList.remove('roulette-active')); window.updateUI(); }, 3000);
 }
 }, 80);
 };
