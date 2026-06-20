@@ -43,8 +43,7 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 .card { background: var(--card-bg); border: 1px solid rgba(0, 242, 255, 0.15); border-radius: 24px; padding: 18px; margin-bottom: 15px; backdrop-filter: blur(10px); flex-shrink: 0;}
 
 .clicker-layout { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px 0 15px 0; background: radial-gradient(circle at center, rgba(0,242,255,0.06) 0%, transparent 70%); border-radius: 32px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.02); flex-shrink: 0;}
-.gift-box-badge { position: absolute; top: 15px; right: 20px; width: 48px; height: 48px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; z-index: 10; transition: transform 0.2s;}
-.gift-box-badge:active { transform: scale(0.9); }
+.gift-box-badge { position: absolute; top: 15px; right: 20px; width: 48px; height: 48px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; z-index: 100; }
 .auto-mine-badge { display: none; font-size: 11px; color: var(--g); font-weight: 900; background: rgba(57,255,20,0.1); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(57,255,20,0.3); margin-top: 10px; animation: glowPulse 1.5s infinite alternate; }
 
 .card-shop-box { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 15px; width: 100%; flex-shrink: 0;}
@@ -180,9 +179,9 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 .ref-item-card { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: rgba(255,255,255,0.02); border: 1px solid rgba(0, 242, 255, 0.15); border-radius: 16px; }
 .ref-item-left b { font-size: 13px; color: #fff; font-weight: 900; display: block; }
 .ref-item-left span { font-size: 11px; color: #94a3b8; font-weight: bold; margin-top: 4px; display: block; }
-.btn-claim-ref { padding: 6px 14px; border-radius: 8px; font-size: 11px; font-weight: 900; cursor: pointer; background: var(--p); border: none; color: white; transition: 0.3s; }
-.btn-claim-ref.active-claim { background: var(--g); color: #000; box-shadow: 0 0 10px var(--g); }
-.btn-claim-ref.done-claim { background: transparent; border: 1px solid var(--g); color: var(--g); }
+.btn-magic-claim-ref { padding: 6px 14px; border-radius: 8px; font-size: 11px; font-weight: 900; cursor: pointer; background: var(--p); border: none; color: white; transition: 0.3s; }
+.btn-magic-claim-ref.active-claim { background: var(--g); color: #000; box-shadow: 0 0 10px var(--g); }
+.btn-magic-claim-ref.done-claim { background: transparent; border: 1px solid var(--g); color: var(--g); }
 .btn-check-neon { width: 100%; height: 46px; border-radius: 12px; background: linear-gradient(135deg, rgba(0, 242, 255, 0.05), rgba(124, 58, 237, 0.05)); border: 1px dashed var(--c); color: var(--c); font-size: 14px; font-weight: 900; cursor: pointer; margin-top: 10px; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .btn-check-neon:active { transform: scale(0.95); background: rgba(0, 242, 255, 0.2); }
 .spin-anim { animation: spin 1s linear infinite; }
@@ -197,7 +196,6 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 .payment-status { margin-top: 15px; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 900; background: rgba(255,215,0,0.1); color: var(--gold); border: 1px dashed var(--gold); display: none; }
 .slot-free-ads-container { background: rgba(255,255,255,0.02); border: 1px dashed rgba(0,242,255,0.2); border-radius: 16px; padding: 15px; margin-bottom: 15px; flex-shrink: 0; }
 
-/* التعديل الجبار لشبكة الدخول اليومي */
 .daily-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999999 !important; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); }
 .daily-modal-box { background: linear-gradient(145deg, #0a0624, #050212); border: 2px solid var(--gold); border-radius: 20px; padding: 20px; width: 100%; max-width: 360px; box-shadow: 0 0 40px rgba(255, 215, 0, 0.2); }
 .daily-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; width: 100%; }
@@ -382,7 +380,7 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 <div class="cockpit-panel">
 <div class="side-control"><span>BET AMOUNT</span><div class="side-btn-row"><button class="btn-luxury-plus-minus" onclick="window.changeRocketBet(-100)">-</button><b id="rB-v">100</b><button class="btn-luxury-plus-minus" onclick="window.changeRocketBet(100)">+</button></div></div>
 <button id="rock-btn" class="btn-rocket-neon-launch" onclick="window.launchRocket()">LAUNCH</button>
-<div class="side-control"><span>AUTO TARGET</span><div class="side-btn-row"><button class="btn-luxury-plus-minus" onclick="window.changeRocketMult(-0.5)">-</button><b id="rX-v">2.0x</b><button class="btn-luxury-plus-minus" onclick="window.changeRocketMult(0.5)">+</button></div></div>
+<div class="side-control"><span>AUTO TARGET</span><div class="side-btn-row"><button class="btn-luxury-plus-minus" onclick="window.changeRocketMult(-0.5)">-</button><b id="rX-v">2.0x</b><button class="btn-luxury-plus-minus" onclick="window.changeRocketMult(0.5)/">+</button></div></div>
 </div>
 </div>
 
@@ -448,7 +446,6 @@ const startParam = tg.initDataUnsafe?.start_param;
 const BOT_USERNAME = "FMC_Verse_Drop_bot";
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQGjMw11aiUxwSyjhwWGhzJvXIEJ9rg6u23uhPnKs8A1pk56M4dZJ5gjoZw4JWcDXc/exec";
 
-// عنوان محفظتك لاستقبال المدفوعات
 window.dev_ton_wallet = "UQA-nWewa9gdU0Oa7Ua__Gcwi1DdAjP6RxZ1s9OarjvEVuug";
 
 let AdController = null;
@@ -461,9 +458,6 @@ async function registerReferral() {
 }
 registerReferral();
 
-// ==========================================
-// قواميس اللغات الكاملة الـ 8 لغات
-// ==========================================
 const translations = {
 ar: { balance: "الرصيد", cards: "الكروت", connect: "ربط المحفظة", nav_mining: "MINING", nav_games: "GAMES", nav_tasks: "TASKS", nav_ref: "REFERRAL", nav_wallet: "WALLET", daily_title: "🎁 مكافأة الدخول اليومية", shop_title: "🛒 متجر الكروت:", btn_upgrade: "UPGRADE MINING FARMS", casino_title: "<i class='fas fa-store'></i> VERSE CASINO STORE", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>نظام الإحالات</span>", ref_desc: "ادعُ 10 أصدقاء نشطين لضمان حصتك في الإيردروب!", copy_link: "انسخ رابط الدعوة", check_ref: "تحديث الإحالات الحقيقية", rewards_list: "🎁 قائمة المكافآت:", wallet_title: "📥 إعدادات محافظ السحب:", buy: "شراء", save: "حفظ العناوين", enter: "الدخول", back: "العودة", pay_confirm: "تأكيد وبدء الدفع", pay_req: "المبلغ المطلوب:", pay_to: "من محفظتك:", btn_cancel: "إلغاء", btn_pay: "دفع الآن", no_cards: "معكش كروت كفاية!", no_coins: "رصيدك غير كافي!", day_word: "يوم", copied: "تم نسخ الرابط!" },
 en: { balance: "Balance", cards: "Cards", connect: "Connect Wallet", nav_mining: "MINING", nav_games: "GAMES", nav_tasks: "TASKS", nav_ref: "REFERRAL", nav_wallet: "WALLET", daily_title: "🎁 Daily Reward", shop_title: "🛒 Card Shop:", btn_upgrade: "UPGRADE FARMS", casino_title: "<i class='fas fa-store'></i> VERSE CASINO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referral System</span>", ref_desc: "Invite 10 active friends to secure your airdrop!", copy_link: "Copy Invite Link", check_ref: "Sync Real Invites", rewards_list: "🎁 Rewards List:", wallet_title: "📥 Wallets:", buy: "Buy", save: "Save Details", enter: "ENTER", back: "Back", pay_confirm: "Confirm Payment", pay_req: "Amount:", pay_to: "From Your Wallet:", btn_cancel: "Cancel", btn_pay: "Pay Now", no_cards: "Not enough cards!", no_coins: "Not enough coins!", day_word: "Day", copied: "Copied!" },
@@ -471,8 +465,8 @@ ru: { balance: "Баланс", cards: "Карты", connect: "Кошелек", n
 es: { balance: "Saldo", cards: "Cartas", connect: "Conectar", nav_mining: "MINERÍA", nav_games: "JUEGOS", nav_tasks: "TAREAS", nav_ref: "REFERIDOS", nav_wallet: "BILLETERA", daily_title: "🎁 Recompensa Diaria", shop_title: "🛒 Tienda:", btn_upgrade: "MEJORAR GRANJAS", casino_title: "<i class='fas fa-store'></i> CASINO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Sistema de Referidos</span>", ref_desc: "¡Invita a 10 amigos!", copy_link: "Copiar Enlace", check_ref: "Verificar", rewards_list: "🎁 Recompensas:", wallet_title: "📥 Billeteras:", buy: "Comprar", save: "Guardar", enter: "ENTRAR", back: "Atrás", pay_confirm: "Pago", pay_req: "Monto:", pay_to: "Desde Billetera:", btn_cancel: "Cancelar", btn_pay: "Pagar", no_cards: "¡Sin cartas!", no_coins: "¡Sin saldo!", day_word: "Día", copied: "¡Copiado!" },
 zh: { balance: "余额", cards: "卡片", connect: "连接钱包", nav_mining: "挖矿", nav_games: "游戏", nav_tasks: "任务", nav_ref: "推荐", nav_wallet: "钱包", daily_title: "🎁 每日奖励", shop_title: "🛒 商店:", btn_upgrade: "升级农场", casino_title: "<i class='fas fa-store'></i> 赌场", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>推荐系统</span>", ref_desc: "邀请10位活跃朋友获取空投！", copy_link: "复制链接", check_ref: "检查邀请", rewards_list: "🎁 奖励列表:", wallet_title: "📥 提款钱包:", buy: "购买", save: "保存", enter: "进入", back: "返回", pay_confirm: "确认付款", pay_req: "金额:", pay_to: "从钱包:", btn_cancel: "取消", btn_pay: "支付", no_cards: "卡片不足！", no_coins: "余额不足！", day_word: "天", copied: "已复制！" },
 hi: { balance: "बैलेंस", cards: "कार्ड", connect: "वॉलेट", nav_mining: "माइनिंग", nav_games: "गेम्स", nav_tasks: "टास्क", nav_ref: "रेफरल", nav_wallet: "वॉलेट", daily_title: "🎁 दैनिक इनाम", shop_title: "🛒 दुकान:", btn_upgrade: "अपग्रेड करें", casino_title: "<i class='fas fa-store'></i> कैसीनो", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>रेफरल सिस्टम</span>", ref_desc: "10 दोस्तों को आमंत्रित करें!", copy_link: "लिंक कॉपी करें", check_ref: "चेक करें", rewards_list: "🎁 इनाम सूची:", wallet_title: "📥 वॉलेट:", buy: "खरीदें", save: "सहेजें", enter: "प्रवेश करें", back: "वापस", pay_confirm: "भुगतान", pay_req: "राशि:", pay_to: "वॉलेट से:", btn_cancel: "रद्द करें", btn_pay: "भुगतान करें", no_cards: "पर्याप्त कार्ड नहीं!", no_coins: "पर्याप्त सिक्के नहीं!", day_word: "दिन", copied: "कॉपी किया गया!" },
-ur: { balance: "بیلنس", cards: "کارڈز", connect: "والٹ", nav_mining: "مائننگ", nav_games: "گیمز", nav_tasks: "ٹاسکس", nav_ref: "ریفرل", nav_wallet: "والٹ", daily_title: "🎁 روزانہ کا انعام", shop_title: "🛒 کارڈ شاپ:", btn_upgrade: "فارمز اپ گریڈ کریں", casino_title: "<i class='fas fa-store'></i> سائبر کیسینو", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>ریفرل سسٹم</span>", ref_desc: "10 دوستوں کو مدعو کریں!", copy_link: "لنک کاپی کریں", check_ref: "چیک کریں", rewards_list: "🎁 انعامات کی فہرست:", wallet_title: "📥 والٹس:", buy: "خریدیں", save: "محفوظ کریں", enter: "داخل ہوں", back: "پیچھے", pay_confirm: "ادائیگی", pay_req: "مطلوبہ رقم:", pay_to: "والٹ سے:", btn_cancel: "منسوخ کریں", btn_pay: "ادائیگی کریں", no_cards: "کافی کارڈ نہیں!", no_coins: "کافی سکے نہیں!", day_word: "دن", copied: "کاپی ہو گیا!" },
-tr: { balance: "Bakiye", cards: "Kartlar", connect: "Cüzdan", nav_mining: "MADENCİLİK", nav_games: "OYUNLAR", nav_tasks: "GÖREVLER", nav_ref: "REFERANS", nav_wallet: "CÜZDAN", daily_title: "🎁 Günlük Ödül", shop_title: "🛒 Mağaza:", btn_upgrade: "YÜKSELT", casino_title: "<i class='fas fa-store'></i> CASİNO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referans Sistemi</span>", ref_desc: "10 arkadaşınızı davet edin!", copy_link: "Kopyala", check_ref: "Kontrol Et", rewards_list: "🎁 Ödül Listesi:", wallet_title: "📥 Cüzdanlar:", buy: "Satın Al", save: "Kaydet", enter: "GİRİŞ", back: "Geri", pay_confirm: "Ödemeyi Onayla", pay_req: "Tutar:", pay_to: "Cüzdandan:", btn_cancel: "İptal", btn_pay: "Öde", no_cards: "Yeterli kart yok!", no_coins: "Yeterli bakiye yok!", day_word: "Gün", copied: "Kopyalandı!" }
+ur: { balance: "بیلنس", cards: "کارڈز", connect: "والٹ", nav_mining: "مائننگ", nav_games: "گیمز", nav_tasks: "ٹاسکس", nav_ref: "ریفرل", nav_wallet: "والٹ", daily_title: "🎁 روزانہ کا انعام", shop_title: "🛒 کارڈ شاپ:", btn_upgrade: "فارمز اپ گریڈ کریں", casino_title: "<i class='fas fa-store'></i> سائبر کیسینو", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>ریفرل SYSTEM</span>", ref_desc: "10 دوستوں کو مدعو کریں!", copy_link: "لنک کاپی کریں", check_ref: "چیک کریں", rewards_list: "🎁 انعامات کی فہرست:", wallet_title: "📥 والٹس:", buy: "خریدیں", save: "محفوظ کریں", enter: "داخل ہوں", back: "پیچھے", pay_confirm: "ادائیگی", pay_req: "مطلوبہ رقم:", pay_to: "والٹ سے:", btn_cancel: "منسوخ کریں", btn_pay: "ادائیگی کریں", no_cards: "کافی کارڈ نہیں!", no_coins: "کافی سکے نہیں!", day_word: "دن", copied: "کاپی ہو گیا!" },
+tr: { balance: "Bakiye", cards: "Kartlar", connect: "Cüzdan", nav_mining: "MADENCİLİK", nav_games: "OYUNLAR", nav_tasks: "GÖREVLER", nav_ref: "REFERANS", nav_wallet: "CÜZDAN", daily_title: "🎁 Günlük Ödül", shop_title: "🛒 Mağaza:", btn_upgrade: "YÜKSELT", casino_title: "<i class='fas fa-store'></i> CASİNO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referans Sistemi</span>", ref_desc: "10 arkadaşınızı dav edin!", copy_link: "Kopyala", check_ref: "Kontrol Et", rewards_list: "🎁 Ödül Listesi:", wallet_title: "📥 Cüzdanlar:", buy: "Satın Al", save: "Kaydet", enter: "GİRİŞ", back: "Geri", pay_confirm: "Ödemeyi Onayla", pay_req: "Tutar:", pay_to: "Cüzdandan:", btn_cancel: "İptal", btn_pay: "Öde", no_cards: "Yeterli kart yok!", no_coins: "Yeterli bakiye yok!", day_word: "Gün", copied: "Kopyalandı!" }
 };
 
 window.fmc_lang = 'ar'; window.fmc_balance = 0; window.fmc_cards = 0; window.fmc_profit = 0;
@@ -622,8 +616,8 @@ let rewardText = `Reward: <b style="color:var(--c)">+${(m.coins/1000)}K🪙</b> 
 if(m.extra) rewardText += ` <span style="color:var(--g)">${m.extra}</span>`;
 let btnHTML = '';
 if(window.listClaimed[m.count]) btnHTML = `<button class="btn-claim-ref done-claim">DONE</button>`;
-else if(window.currentReferrals >= m.count) btnHTML = `<button class="btn-claim-ref active-claim" onclick="window.claimListReward(${index})">CLAIM</button>`;
-else btnHTML = `<button class="btn-claim-ref" disabled>🔒</button>`;
+else if(window.currentReferrals >= m.count) btnHTML = `<button class="btn-magic-claim-ref active-claim" onclick="window.claimListReward(${index})">CLAIM</button>`;
+else btnHTML = `<button class="btn-magic-claim-ref" disabled>🔒</button>`;
 item.innerHTML = `<div class="ref-item-left"><b>${m.count} Invites</b><span style="color:#94a3b8; font-size:10px;">${rewardText}</span></div>${btnHTML}`;
 container.appendChild(item);
 });
@@ -821,13 +815,6 @@ setInterval(() => {
 // ==========================================================
 // نافذة الدخول اليومي
 // ==========================================================
-document.addEventListener("DOMContentLoaded", () => {
-    let giftBtn = document.getElementById('btn-gift-modal');
-    if(giftBtn) {
-        giftBtn.addEventListener('click', window.toggleGiftModal);
-    }
-});
-
 window.toggleGiftModal = () => {
 let m = document.getElementById('daily-login-overlay');
 if(m) { 
