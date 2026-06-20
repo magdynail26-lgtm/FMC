@@ -107,7 +107,7 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 .lucky-field { background: #000 !important; border: 1px solid #bc13fe !important; color: #bc13fe !important; padding: 0 10px; height: 44px; border-radius: 8px; font-weight: 900; text-align: center; width: 140px; font-size: 16px;}
 .lucky-field-btn { background: #bc13fe; border: none; color: white; height: 44px; padding: 0 20px; border-radius: 8px; font-weight: 900; cursor: pointer; }
 
-/* الصاروخ - تعديل الارتفاع والأرقام */
+/* الصاروخ */
 .sky { width: 100%; height: 65vh; min-height: 400px; border-radius: 20px; position: relative; overflow: hidden; border: 2px solid var(--c); box-shadow: inset 0 0 40px rgba(0,242,255,0.3); background: #000; margin-bottom: 15px; flex-shrink: 0; }
 .cyber-city { position: absolute; inset: 0; width: 100%; height: 100%; background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=800&auto=format&fit=crop'); background-repeat: repeat-y; background-size: 100% auto; filter: brightness(0.6) contrast(1.2); background-position: 0 0; }
 @keyframes cityScroll { from { background-position: 0 0; } to { background-position: 0 1500px; } }
@@ -139,7 +139,7 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 
 .puzzle-container { background: rgba(255,255,255,0.01); border: 1px solid rgba(0, 242, 255, 0.15); border-radius: 20px; padding: 14px; margin-bottom: 15px; text-align: center; flex-shrink: 0;}
 .puzzle-slots { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
-.puzzle-piece { width: 80px; height: 45px; border-radius: 8px; background: #040114; border: 2px dashed #222; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; color: #444; transition: all 0.3s ease; }
+.puzzle-piece { width: 80px; height: 45px; border-radius: 8px; background: #040114; border: 2px dashed #222; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: #444; transition: all 0.3s ease; }
 .task-card { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: rgba(255,255,255,0.01); border: 1px solid #111; border-radius: 14px; margin-bottom: 8px; flex-shrink: 0; }
 .task-left h4 { font-size: 13px; font-weight: 900; color: #fff; }
 .task-left p { font-size: 10px; color: var(--gold); margin-top: 2px; }
@@ -202,7 +202,6 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 .btn-cancel { flex: 1; background: #222; border: 1px solid #555; color: #fff; padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 900; }
 .btn-confirm { flex: 2; background: linear-gradient(135deg, var(--g), #064e3b); border: 1px solid var(--g); color: #000; padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 900; box-shadow: 0 0 15px rgba(57,255,20,0.3); }
 .payment-status { margin-top: 15px; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 900; background: rgba(255,215,0,0.1); color: var(--gold); border: 1px dashed var(--gold); display: none; }
-
 .slot-free-ads-container { background: rgba(255,255,255,0.02); border: 1px dashed rgba(0,242,255,0.2); border-radius: 16px; padding: 15px; margin-bottom: 15px; flex-shrink: 0; }
 </style>
 </head>
@@ -217,7 +216,7 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 </div>
 <div class="payment-details" style="flex-direction: column; align-items: flex-start; gap: 5px;">
 <span data-i18n="pay_to">من محفظتك:</span>
-<b style="font-size: 10px; color: var(--g); word-break: break-all;" id="pay-wallet-text">UQA...</b>
+<b style="font-size: 10px; color: var(--g); word-break: break-all;" id="pay-wallet-text">جاري قراءة محفظتك...</b>
 </div>
 <div id="payment-status" class="payment-status">جاري المعالجة... ⏳</div>
 <div class="payment-actions" id="payment-actions-row">
@@ -332,6 +331,7 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 <div class="slot-free-ads-container">
 <p style="font-size:11px; color:#94a3b8; text-align:center; margin-bottom:10px;">كروتك خلصت؟ اتفرج على إعلانات وخد كروت!</p>
 <button id="btn-slot-ad" class="btn-check-neon" style="margin-top:0;" onclick="window.watchSlotAd()"><i class="fas fa-play-circle"></i> مشاهدة إعلان (+1 كارت)</button>
+<div id="slot-ad-cooldown" style="display:none; color:var(--red); font-size:11px; text-align:center; margin-top:10px; font-weight:bold;"></div>
 </div>
 
 </div>
@@ -400,7 +400,12 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 <div id="room-tasks" class="page-room">
 <h4 style="font-size:14px; font-weight:900; color:var(--c); margin-bottom:10px;">إعلانات المهام (<span id="ads-counter-text">0</span>/50)</h4>
 <div class="puzzle-container">
-<p style="font-size:12px; font-weight:900; color:var(--g);">شاهد 3 إعلانات للحصول على كارت 🎫</p>
+<p style="font-size:12px; font-weight:900; color:var(--g); margin-bottom:10px;">🧩 شاهد 3 إعلانات للحصول على كارت</p>
+<div class="puzzle-slots">
+    <div class="puzzle-piece" id="p-piece0">1</div>
+    <div class="puzzle-piece" id="p-piece1">2</div>
+    <div class="puzzle-piece" id="p-piece2">3</div>
+</div>
 </div>
 <div class="cooldown-timer" id="cooldown-timer-display"></div>
 <div id="tasks-list-container"></div>
@@ -408,7 +413,7 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 
 <div id="room-wallet" class="page-room">
 <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 15px;" data-i18n="wallet_title">📥 إعدادات محافظ السحب:</h3>
-<div class="wallet-row"><div class="wallet-title" style="color: #0088cc;">💎 TON Wallet Address</div><input type="text" class="wallet-input" placeholder="UQ..."></div>
+<div class="wallet-row"><div class="wallet-title" style="color: #0088cc;">💎 TON Wallet Address</div><input type="text" id="user-ton-withdrawal-input" class="wallet-input" placeholder="UQ..."></div>
 <div class="wallet-row"><div class="wallet-title" style="color: #cbd5e1;">🖤 OKX Address</div><input type="text" class="wallet-input" placeholder="0x..."></div>
 <div class="wallet-row"><div class="wallet-title" style="color: #f3ba2f;">💛 Binance Pay ID</div><input type="text" class="wallet-input" placeholder="Pay ID..."></div>
 <button class="btn-save-neon" onclick="alert('Saved!')" data-i18n="save">حفظ العناوين</button>
@@ -437,6 +442,8 @@ const startParam = tg.initDataUnsafe?.start_param;
 
 const BOT_USERNAME = "FMC_Verse_Drop_bot";
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQGjMw11aiUxwSyjhwWGhzJvXIEJ9rg6u23uhPnKs8A1pk56M4dZJ5gjoZw4JWcDXc/exec";
+
+// عنوان محفظتك لاستقبال المدفوعات
 window.dev_ton_wallet = "UQA-nWewa9gdU0Oa7Ua__Gcwi1DdAjP6RxZ1s9OarjvEVuug";
 
 let AdController = null;
@@ -490,14 +497,22 @@ window.buildDailyGridUI(); window.updateUI();
 };
 
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({ manifestUrl: 'https://fmc-red.vercel.app/tonconnect-manifest.json' });
+
 tonConnectUI.onStatusChange(wallet => {
 const btn = document.getElementById('ton-connect-btn'); const txt = document.getElementById('connect-text');
-if (wallet) {
-window.isWalletConnected = true; btn.classList.add('connected');
-const addr = wallet.account.address; txt.innerText = addr.substring(0,4) + '...' + addr.substring(addr.length-4) + " ✔";
+if (wallet && wallet.account) {
+    window.isWalletConnected = true; btn.classList.add('connected');
+    const addr = wallet.account.address; 
+    txt.innerText = addr.substring(0,4) + '...' + addr.substring(addr.length-4) + " ✔";
+    
+    // تعبئة عنوان محفظة اليوزر في قائمة السحب أوتوماتيك
+    let wInput = document.getElementById('user-ton-withdrawal-input');
+    if(wInput) wInput.value = addr;
 } else {
-window.isWalletConnected = false; btn.classList.remove('connected');
-txt.innerText = (translations[window.fmc_lang] || translations['en']).connect;
+    window.isWalletConnected = false; btn.classList.remove('connected');
+    txt.innerText = (translations[window.fmc_lang] || translations['en']).connect;
+    let wInput = document.getElementById('user-ton-withdrawal-input');
+    if(wInput) wInput.value = "";
 }
 });
 
@@ -506,14 +521,28 @@ window.connectTonWallet = async () => { if (tonConnectUI.connected) await tonCon
 window.openPaymentModal = (amount, callback) => {
 if(!tonConnectUI.connected) { tonConnectUI.openModal(); return; }
 document.getElementById('pay-amount-text').innerText = amount + " TON";
-try { let u = tonConnectUI.account.address; document.getElementById('pay-wallet-text').innerText = u.substring(0,4) + '...' + u.substring(u.length-4); } catch(e) {}
+
+// عرض محفظة اليوزر في واجهة الدفع بشفافية تامة
+try { 
+    if(tonConnectUI.account && tonConnectUI.account.address) {
+        let u = tonConnectUI.account.address; 
+        document.getElementById('pay-wallet-text').innerText = u.substring(0,6) + '...' + u.substring(u.length-4); 
+    } else {
+        document.getElementById('pay-wallet-text').innerText = "المحفظة غير متصلة";
+    }
+} catch(e) {
+    document.getElementById('pay-wallet-text').innerText = "خطأ في قراءة المحفظة";
+}
+
 let statusEl = document.getElementById('payment-status');
-statusEl.style.display = 'block'; statusEl.style.background = 'rgba(255,215,0,0.1)'; statusEl.style.color = 'var(--gold)'; statusEl.style.borderColor = 'var(--gold)'; statusEl.innerHTML = '⚠️ يرجى تأكيد المعاملة من محفظتك...';
+statusEl.style.display = 'block'; statusEl.style.background = 'rgba(255,215,0,0.1)'; statusEl.style.color = 'var(--gold)'; statusEl.style.borderColor = 'var(--gold)'; statusEl.innerHTML = '⚠️ يرجى تأكيد المعاملة من تطبيق محفظتك...';
 document.getElementById('payment-actions-row').style.display = 'flex'; document.getElementById('custom-payment-modal').style.display = 'flex';
+
 document.getElementById('btn-confirm-pay').onclick = async () => {
 document.getElementById('payment-actions-row').style.display = 'none';
-statusEl.innerHTML = '⏳ جاري فتح المحفظة للتأكيد...'; statusEl.style.background = 'rgba(0,242,255,0.1)'; statusEl.style.color = 'var(--c)'; statusEl.style.borderColor = 'var(--c)';
+statusEl.innerHTML = '⏳ جاري فتح تطبيق المحفظة للتأكيد...'; statusEl.style.background = 'rgba(0,242,255,0.1)'; statusEl.style.color = 'var(--c)'; statusEl.style.borderColor = 'var(--c)';
 try {
+// أمر الدفع يذهب لمحفظة المطور (إعداداتك)
 const transaction = { validUntil: Math.floor(Date.now() / 1000) + 120, messages: [ { address: window.dev_ton_wallet, amount: Math.floor(amount * 1000000000).toString() } ] };
 const result = await tonConnectUI.sendTransaction(transaction);
 if(result) { statusEl.innerHTML = '✅ تم تأكيد الدفع بنجاح!'; statusEl.style.color = 'var(--g)'; statusEl.style.borderColor = 'var(--g)'; statusEl.style.background = 'rgba(57,255,20,0.1)'; setTimeout(() => { window.closePaymentModal(); if(callback) callback(); }, 2000); }
@@ -599,8 +628,21 @@ window.updateUI(); window.buildReferralList();
 };
 
 // ==========================================================
-// النظام الموحد للـ 50 إعلان وراحة 10 دقائق
+// النظام الموحد للـ 50 إعلان وراحة 10 دقائق والبازل
 // ==========================================================
+window.updatePuzzleUI = () => {
+    let batchAds = parseInt(localStorage.getItem('fmc_ads_batch') || '0');
+    let puzzleIndex = batchAds % 3;
+    if(puzzleIndex === 0 && batchAds > 0 && batchAds % 3 === 0) puzzleIndex = 3; 
+    for(let i=0; i<3; i++) {
+        let p = document.getElementById('p-piece' + i);
+        if(p) { 
+            p.style.background = i < puzzleIndex ? 'var(--g)' : '#040114'; 
+            p.style.color = i < puzzleIndex ? '#000' : '#444'; 
+        }
+    }
+};
+
 window.checkAdGlobalState = () => {
     let dateStr = new Date().toDateString();
     if(localStorage.getItem('fmc_ads_date') !== dateStr) {
@@ -614,7 +656,6 @@ window.checkAdGlobalState = () => {
     let cooldown = parseInt(localStorage.getItem('fmc_ad_cooldown') || '0');
     let now = Date.now();
     
-    // تحديث الواجهة للمهام
     if(document.getElementById('ads-counter-text')) document.getElementById('ads-counter-text').innerText = todayAds;
     
     let isLimitReached = todayAds >= 50;
@@ -628,7 +669,6 @@ window.checkAdGlobalState = () => {
         msg = `⏳ راحة الإعلانات: ${m}:${s < 10 ? '0':''}${s} دقيقة`;
     }
 
-    // تطبيق الحالة على زر السلوت
     let slotBtn = document.getElementById('btn-slot-ad');
     let slotCdText = document.getElementById('slot-ad-cooldown');
     if (slotBtn && slotCdText) {
@@ -643,7 +683,6 @@ window.checkAdGlobalState = () => {
         }
     }
 
-    // تطبيق الحالة على المهام
     let timerEl = document.getElementById('cooldown-timer-display');
     if (timerEl) {
         if (isLimitReached || isCooldown) {
@@ -663,6 +702,8 @@ window.processAdSuccess = () => {
     let batchAds = parseInt(localStorage.getItem('fmc_ads_batch') || '0') + 1;
     localStorage.setItem('fmc_ads_today', todayAds.toString());
 
+    if (batchAds % 3 === 0) { window.fmc_cards += 1; }
+
     if(batchAds >= 6) {
         localStorage.setItem('fmc_ad_cooldown', (Date.now() + 10 * 60 * 1000).toString());
         localStorage.setItem('fmc_ads_batch', '0');
@@ -670,17 +711,18 @@ window.processAdSuccess = () => {
         localStorage.setItem('fmc_ads_batch', batchAds.toString());
     }
     
-    // هدية كل 3 إعلانات مجمعة
-    if (todayAds % 3 === 0) { window.fmc_cards += 1; }
     window.updateUI();
     window.checkAdGlobalState();
-    if(document.getElementById('room-tasks').classList.contains('active')) window.buildTasksList();
+    if(document.getElementById('room-tasks').classList.contains('active')) {
+        window.buildTasksList();
+    }
 };
 
 window.buildTasksList = () => {
 const container = document.getElementById('tasks-list-container'); if(!container) return; container.innerHTML = '';
 let todayAds = parseInt(localStorage.getItem('fmc_ads_today') || '0');
 let state = window.checkAdGlobalState();
+window.updatePuzzleUI();
 
 for (let i = 1; i <= 50; i++) {
     const card = document.createElement('div'); card.className = 'task-card';
@@ -709,7 +751,7 @@ window.watchGlobalAd = (source, num = 0) => {
 
     AdController.show().then(() => {
         if(source === 'task') window.fmc_balance += 500;
-        else if (source === 'slot') window.fmc_cards += 1; // السلوت بيدي كارت فوري
+        else if (source === 'slot') window.fmc_cards += 1; 
         
         window.processAdSuccess();
     }).catch(() => {
@@ -806,17 +848,16 @@ spinCount++;
 if(spinCount > 15) {
 clearInterval(spinInterval);
 
-// منطق الجاك بوت اليومي العشوائي
 let lastJackpot = parseInt(localStorage.getItem('fmc_last_jackpot') || '0');
 let canHitJackpot = (Date.now() - lastJackpot) > 24 * 60 * 60 * 1000;
-let isJackpot = canHitJackpot && (Math.random() < 0.05); // فرصة 5% إذا مر 24 ساعة
+let isJackpot = canHitJackpot && (Math.random() < 0.05);
 
 let resultIcons = []; let totalWin = 0; let hist = document.getElementById('slot-hist-bar');
 
 if (isJackpot) {
     localStorage.setItem('fmc_last_jackpot', Date.now().toString());
     resultIcons = Array(9).fill('🎰'); for(let i=0; i<9; i++) { cells[i].innerText = resultIcons[i]; cells[i].classList.add('jackpot-highlight'); }
-    let jackpotWin = totalCost * 200; // نسبة وتناسب للرهان (مضاعف 200x)
+    let jackpotWin = totalCost * 200;
     window.fmc_balance += jackpotWin; window.fmc_profit += jackpotWin;
     document.getElementById('jackpot-amount-txt').innerText = `+${jackpotWin.toLocaleString()}`; document.getElementById('jackpot-alert').style.display = 'flex'; setTimeout(() => { document.getElementById('jackpot-alert').style.display = 'none'; }, 4000);
     hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,215,0,0.2); color: var(--gold); border: 1px solid var(--gold); display: inline-block; flex-shrink: 0;">DAILY JACKPOT! (+${jackpotWin.toLocaleString()})</div>` + hist.innerHTML;
@@ -845,16 +886,16 @@ window.updateUI(); window.isSlotSpinningActive = false;
 };
 
 // ==========================================================
-// الروليت (الستيك فوق) و جاك بوت السلطة
+// الروليت وجاك بوت السلطة
 // ==========================================================
 window.luckyItemsConfig = [
-{ id: 0, icon: '🥩', mult: 25, type: 'meat', prob: 0.02, degree: -90 }, // الستيك في النص فوق
+{ id: 0, icon: '🥩', mult: 25, type: 'meat', prob: 0.02, degree: -90 },
 { id: 1, icon: '🍅', mult: 5, type: 'veg', prob: 0.20, degree: -45 },
 { id: 2, icon: '🍤', mult: 15, type: 'meat', prob: 0.05, degree: 0 },
 { id: 3, icon: '🥕', mult: 5, type: 'veg', prob: 0.20, degree: 45 },
 { id: 4, icon: '🐄', mult: 20, type: 'meat', prob: 0.04, degree: 90 },
 { id: 5, icon: '🫑', mult: 5, type: 'veg', prob: 0.20, degree: 135 },
-{ id: 6, icon: '🐟', mult: 10, type: 'meat', prob: 0.05, degree: 180 }, // السمكة تحت
+{ id: 6, icon: '🐟', mult: 10, type: 'meat', prob: 0.05, degree: 180 },
 { id: 7, icon: '🌽', mult: 5, type: 'veg', prob: 0.24, degree: 225 } 
 ];
 
@@ -894,7 +935,7 @@ let counter = document.getElementById('bet-node-' + nodeId); if(counter) { count
 
 window.drawLuckyWinner = () => {
 window.isLuckyWheelDrawing = true;
-let isSaladJackpot = Math.random() < 0.05; // 5% chance for Salad Jackpot
+let isSaladJackpot = Math.random() < 0.05; 
 let rand = Math.random(); let cumulative = 0; let winnerItem = window.luckyItemsConfig[0];
 for(let item of window.luckyItemsConfig) { cumulative += item.prob; if(rand <= cumulative) { winnerItem = item; break; } }
 let nodes = document.querySelectorAll('.lucky-item-node'); let spinCount = 0; let maxSpins = 30 + Math.floor(Math.random() * 8); let currentIndex = 0;
@@ -907,7 +948,6 @@ let hist = document.getElementById('hist'); let winAmount = 0;
 let popup = document.getElementById('greedy-winner-popup'); let pTitle = document.getElementById('gw-title'); let pIcon = document.getElementById('gw-icon'); let pAmt = document.getElementById('gw-amt');
 
 if (isSaladJackpot) {
-    // جاك بوت السلطة - إضاءة الكل ومكسب على كل الرهانات
     nodes.forEach(n => n.classList.add('roulette-active'));
     for (let pickId in window.luckyLivePicks) {
         let pickedItem = window.luckyItemsConfig.find(i => i.id == pickId);
@@ -923,7 +963,6 @@ if (isSaladJackpot) {
     }
     hist.innerHTML = `<div class="hist-chip circle-chip">🥗</div>` + hist.innerHTML;
 } else {
-    // اللعب العادي
     let winNode = document.getElementById('lucky-node-' + winnerItem.id); if(winNode) winNode.classList.add('roulette-active');
     if(window.luckyLivePicks[winnerItem.id]) { winAmount = window.luckyLivePicks[winnerItem.id] * winnerItem.mult; window.fmc_balance += winAmount; window.fmc_profit += winAmount; }
     pIcon.innerText = winnerItem.icon;
