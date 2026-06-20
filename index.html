@@ -43,7 +43,7 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 .card { background: var(--card-bg); border: 1px solid rgba(0, 242, 255, 0.15); border-radius: 24px; padding: 18px; margin-bottom: 15px; backdrop-filter: blur(10px); flex-shrink: 0;}
 
 .clicker-layout { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px 0 15px 0; background: radial-gradient(circle at center, rgba(0,242,255,0.06) 0%, transparent 70%); border-radius: 32px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.02); flex-shrink: 0;}
-.gift-box-badge { position: absolute; top: 15px; right: 20px; width: 48px; height: 48px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; z-index: 100; transition: transform 0.2s;}
+.gift-box-badge { position: absolute; top: 15px; right: 20px; width: 48px; height: 48px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; z-index: 10; transition: transform 0.2s;}
 .gift-box-badge:active { transform: scale(0.9); }
 .auto-mine-badge { display: none; font-size: 11px; color: var(--g); font-weight: 900; background: rgba(57,255,20,0.1); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(57,255,20,0.3); margin-top: 10px; animation: glowPulse 1.5s infinite alternate; }
 
@@ -100,7 +100,6 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 .lucky-field { background: #000 !important; border: 1px solid #bc13fe !important; color: #bc13fe !important; padding: 0 10px; height: 44px; border-radius: 8px; font-weight: 900; text-align: center; width: 140px; font-size: 16px;}
 .lucky-field-btn { background: #bc13fe; border: none; color: white; height: 44px; padding: 0 20px; border-radius: 8px; font-weight: 900; cursor: pointer; }
 
-/* الصاروخ */
 .sky { width: 100%; height: 65vh; min-height: 400px; border-radius: 20px; position: relative; overflow: hidden; border: 2px solid var(--c); box-shadow: inset 0 0 40px rgba(0,242,255,0.3); background: #000; margin-bottom: 15px; flex-shrink: 0; }
 .cyber-city { position: absolute; inset: 0; width: 100%; height: 100%; background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=800&auto=format&fit=crop'); background-repeat: repeat-y; background-size: 100% auto; filter: brightness(0.6) contrast(1.2); background-position: 0 0; }
 @keyframes cityScroll { from { background-position: 0 0; } to { background-position: 0 1500px; } }
@@ -110,7 +109,6 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 @keyframes flameBurn { 0% { transform: scaleY(0.8); } 100% { transform: scaleY(1.3); } }
 .rocket-shake { animation: violentShake 0.05s infinite alternate; bottom: 20% !important; }
 @keyframes violentShake { 0% { margin-left: 2px; } 100% { margin-left: -2px; } }
-
 .mult-v { position: absolute; top: 25%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 60px; font-weight: 900; z-index: 20; text-align: center; text-shadow: 0 0 25px rgba(0,0,0,1); }
 .color-blue { color: var(--c) !important; text-shadow: 0 0 20px var(--c) !important; }
 
@@ -199,10 +197,14 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 .payment-status { margin-top: 15px; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 900; background: rgba(255,215,0,0.1); color: var(--gold); border: 1px dashed var(--gold); display: none; }
 .slot-free-ads-container { background: rgba(255,255,255,0.02); border: 1px dashed rgba(0,242,255,0.2); border-radius: 16px; padding: 15px; margin-bottom: 15px; flex-shrink: 0; }
 
-/* تصميم نافذة الدخول اليومي الجديدة (Overlay) */
+/* التعديل الجبار لشبكة الدخول اليومي */
 .daily-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999999 !important; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); }
 .daily-modal-box { background: linear-gradient(145deg, #0a0624, #050212); border: 2px solid var(--gold); border-radius: 20px; padding: 20px; width: 100%; max-width: 360px; box-shadow: 0 0 40px rgba(255, 215, 0, 0.2); }
-.daily-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 15px; width: 100%; }
+.daily-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; width: 100%; }
+.daily-day-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; text-align: center; font-weight: 900; color: #aaa; cursor: pointer; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.2s;}
+.daily-day-box:hover { transform: translateY(-2px); }
+.daily-day-box.active-day { border-color: var(--c); background: rgba(0, 242, 255, 0.1); box-shadow: 0 0 15px rgba(0,242,255,0.3); }
+.daily-day-box.claimed { border-color: var(--g) !important; background: rgba(57,255,20,0.05) !important; opacity: 0.6; }
 </style>
 </head>
 <body>
@@ -226,7 +228,6 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 </div>
 </div>
 
-<!-- النافذة المنبثقة الفخمة للدخول اليومي -->
 <div id="daily-login-overlay" class="daily-modal-overlay">
 <div class="daily-modal-box">
 <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
@@ -281,7 +282,7 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 </div>
 
 <div class="clicker-layout">
-<div class="gift-box-badge" onclick="window.toggleGiftModal()">🎁</div>
+<div class="gift-box-badge" id="btn-gift-modal" onclick="window.toggleGiftModal()">🎁</div>
 <div class="mining-circle-mega" onclick="window.tapClickerMega()">FMC<span>MINING</span></div>
 <div class="auto-mine-badge" id="auto-mine-indicator">⚡ Auto Mining Active...</div>
 <div class="energy-box" style="margin-top:10px;"><i class="fas fa-bolt"></i> <span id="eg-v">500</span> / 500</div>
@@ -520,7 +521,6 @@ if (wallet && wallet.account) {
     const addr = wallet.account.address; 
     window.userConnectedTonAddress = addr;
     txt.innerText = addr.substring(0,4) + '...' + addr.substring(addr.length-4) + " ✔";
-    
     let wInput = document.getElementById('user-ton-withdrawal-input');
     if(wInput) wInput.value = addr;
 } else {
@@ -538,7 +538,6 @@ window.openPaymentModal = (amount, callback) => {
 if(!tonConnectUI.connected) { tonConnectUI.openModal(); return; }
 document.getElementById('pay-amount-text').innerText = amount + " TON";
 
-// عرض محفظة اليوزر في واجهة الدفع بشفافية
 let uAddr = window.userConnectedTonAddress || (tonConnectUI.account && tonConnectUI.account.address);
 if(uAddr) {
     document.getElementById('pay-wallet-text').innerText = uAddr.substring(0,8) + '...' + uAddr.substring(uAddr.length-6); 
@@ -554,7 +553,6 @@ document.getElementById('btn-confirm-pay').onclick = async () => {
 document.getElementById('payment-actions-row').style.display = 'none';
 statusEl.innerHTML = '⏳ جاري فتح تطبيق المحفظة للتأكيد...'; statusEl.style.background = 'rgba(0,242,255,0.1)'; statusEl.style.color = 'var(--c)'; statusEl.style.borderColor = 'var(--c)';
 try {
-// إرسال الفلوس إلى محفظتك كمطور
 const transaction = { validUntil: Math.floor(Date.now() / 1000) + 120, messages: [ { address: window.dev_ton_wallet, amount: Math.floor(amount * 1000000000).toString() } ] };
 const result = await tonConnectUI.sendTransaction(transaction);
 if(result) { statusEl.innerHTML = '✅ تم تأكيد الدفع بنجاح!'; statusEl.style.color = 'var(--g)'; statusEl.style.borderColor = 'var(--g)'; statusEl.style.background = 'rgba(57,255,20,0.1)'; setTimeout(() => { window.closePaymentModal(); if(callback) callback(); }, 2000); }
@@ -587,7 +585,7 @@ window.changeRocketMult = (v) => { window.rocketTargetMultiplier = Math.max(1.5,
 window.enterGame = (game) => {
 document.querySelectorAll('.page-room').forEach(p => p.classList.remove('active'));
 let rG = document.getElementById('room-game-' + game); if(rG) rG.classList.add('active');
-if(game=='slot') { for(let i=0; i<9; i++) document.getElementById('c'+i).innerText = icons[Math.floor(Math.random()*icons.length)]; window.updateUI(); window.checkAdGlobalState(); }
+if(game=='slot') { for(let i=0; i<9; i++) document.getElementById('c'+i).innerText = icons[Math.floor(Math.random()*icons.length)]; window.updateUI(); window.checkSlotAdsState(); }
 if(game=='greedy') window.bootLuckyArenaEngine();
 };
 window.exitToMenu = () => window.switchMainTab('games');
@@ -640,7 +638,7 @@ window.updateUI(); window.buildReferralList();
 };
 
 // ==========================================================
-// النظام الموحد للـ 50 إعلان كل 12 ساعة وراحة 10 دقائق
+// النظام الموحد للـ 50 إعلان والعداد التنازلي على الزراير
 // ==========================================================
 window.updatePuzzleUI = () => {
     let batchAds = parseInt(localStorage.getItem('fmc_ads_batch') || '0');
@@ -648,10 +646,7 @@ window.updatePuzzleUI = () => {
     if(puzzleIndex === 0 && batchAds > 0 && batchAds % 3 === 0) puzzleIndex = 3; 
     for(let i=0; i<3; i++) {
         let p = document.getElementById('p-piece' + i);
-        if(p) { 
-            p.style.background = i < puzzleIndex ? 'var(--g)' : '#040114'; 
-            p.style.color = i < puzzleIndex ? '#000' : '#444'; 
-        }
+        if(p) { p.style.background = i < puzzleIndex ? 'var(--g)' : '#040114'; p.style.color = i < puzzleIndex ? '#000' : '#444'; }
     }
 };
 
@@ -671,46 +666,26 @@ window.checkAdGlobalState = () => {
     let todayAds = parseInt(localStorage.getItem('fmc_ads_today') || '0');
     let cooldown = parseInt(localStorage.getItem('fmc_ad_cooldown') || '0');
     
-    let counterEl = document.getElementById('ads-counter-text');
-    if(counterEl) counterEl.innerText = todayAds;
+    if(document.getElementById('ads-counter-text')) document.getElementById('ads-counter-text').innerText = todayAds;
     
     let isLimitReached = todayAds >= 50;
     let isCooldown = now < cooldown;
-    let msg = "";
-
-    if (isLimitReached) msg = "🔴 استنفدت الـ 50 إعلان. عد بعد 12 ساعة!";
-    else if (isCooldown) {
-        let remaining = Math.ceil((cooldown - now) / 1000);
-        let m = Math.floor(remaining / 60); let s = remaining % 60;
-        msg = `⏳ راحة الإعلانات: ${m}:${s < 10 ? '0':''}${s} دقيقة`;
-    }
-
-    let slotBtn = document.getElementById('btn-slot-ad');
-    let slotCdText = document.getElementById('slot-ad-cooldown');
-    if (slotBtn && slotCdText) {
-        if (isLimitReached || isCooldown) {
-            slotBtn.style.display = 'none';
-            slotCdText.style.display = 'block';
-            slotCdText.innerText = msg;
-        } else {
-            slotBtn.style.display = 'flex';
-            slotCdText.style.display = 'none';
-            slotBtn.innerHTML = `<i class="fas fa-play-circle"></i> مشاهدة إعلان (+1 كارت)`;
-        }
-    }
-
-    let timerEl = document.getElementById('cooldown-timer-display');
-    if (timerEl) {
-        if (isLimitReached || isCooldown) {
-            timerEl.classList.add('active-timer');
-            timerEl.innerText = msg;
-        } else {
-            timerEl.classList.remove('active-timer');
-            timerEl.style.display = 'none';
-        }
-    }
     
-    return { available: !(isLimitReached || isCooldown) };
+    return { isLimitReached, isCooldown, cooldownTime: cooldown };
+};
+
+window.updateCooldownButtons = () => {
+    let state = window.checkAdGlobalState();
+    let now = Date.now();
+
+    if (state.isCooldown) {
+        let remaining = Math.ceil((state.cooldownTime - now) / 1000);
+        let m = Math.floor(remaining / 60); let s = remaining % 60;
+        let timeStr = `⏳ ${m}:${s < 10 ? '0':''}${s}`;
+        document.querySelectorAll('.btn-cooldown-timer').forEach(b => {
+            b.innerText = timeStr;
+        });
+    }
 };
 
 window.processAdSuccess = () => {
@@ -728,67 +703,131 @@ window.processAdSuccess = () => {
     }
     
     window.updateUI();
-    window.checkAdGlobalState();
-    if(document.getElementById('room-tasks').classList.contains('active')) {
-        window.buildTasksList();
-    }
+    if(document.getElementById('room-tasks').classList.contains('active')) { window.buildTasksList(); }
 };
 
 window.buildTasksList = () => {
-const container = document.getElementById('tasks-list-container'); if(!container) return; container.innerHTML = '';
-let todayAds = parseInt(localStorage.getItem('fmc_ads_today') || '0');
-let state = window.checkAdGlobalState();
-window.updatePuzzleUI();
+    const container = document.getElementById('tasks-list-container'); if(!container) return; container.innerHTML = '';
+    let todayAds = parseInt(localStorage.getItem('fmc_ads_today') || '0');
+    let state = window.checkAdGlobalState();
+    window.updatePuzzleUI();
 
-for (let i = 1; i <= 50; i++) {
-    const card = document.createElement('div'); card.className = 'task-card';
-    let isDone = i <= todayAds;
-    let btnHTML = '';
-    
-    if(isDone) {
-        btnHTML = `<button class="btn-watch" disabled style="background:#222 !important;color:#777 !important;">✔ Done</button>`;
-    } else if(!state.available) {
-        btnHTML = `<button class="btn-watch" disabled style="background:#555 !important;">⏳ Wait</button>`;
-    } else {
-        btnHTML = `<button class="btn-watch" id="tk-btn-${i}" onclick="window.watchGlobalAd('task', ${i})">Watch 📺</button>`;
+    for (let i = 1; i <= 50; i++) {
+        const card = document.createElement('div'); card.className = 'task-card';
+        let isDone = i <= todayAds;
+        let btnHTML = '';
+        
+        if(isDone) {
+            btnHTML = `<button class="btn-watch" disabled style="background:#222 !important;color:#777 !important;">✔ Done</button>`;
+        } else if(state.isLimitReached) {
+            btnHTML = `<button class="btn-watch" disabled style="background:#555 !important;">🔒 غداً</button>`;
+        } else if(state.isCooldown) {
+            btnHTML = `<button class="btn-watch btn-cooldown-timer" disabled style="background:#555 !important; font-weight:bold; font-size:12px;">⏳ 10:00</button>`;
+        } else {
+            btnHTML = `<button class="btn-watch" id="tk-btn-${i}" onclick="window.watchGlobalAd('task', ${i})">Watch 📺</button>`;
+        }
+        card.innerHTML = `<div class="task-left"><h4>Sponsor Ad #${i}</h4><p>+500 Coins</p></div>${btnHTML}`;
+        container.appendChild(card); 
     }
-    card.innerHTML = `<div class="task-left"><h4>Sponsor Ad #${i}</h4><p>+500 Coins</p></div>${btnHTML}`;
-    container.appendChild(card); 
-}
+
+    if (state.isCooldown) window.updateCooldownButtons();
 };
 
 window.watchGlobalAd = (source, num = 0) => {
     let state = window.checkAdGlobalState();
-    if(!state.available) { alert("الإعلانات غير متاحة الآن."); return; }
+    if(state.isLimitReached || state.isCooldown) { alert("الإعلانات غير متاحة الآن."); return; }
     if (!AdController) { alert("نظام الإعلانات غير جاهز."); return; }
     
-    let btn = source === 'slot' ? document.getElementById('btn-slot-ad') : document.getElementById('tk-btn-' + num);
+    let btn = document.getElementById('tk-btn-' + num);
     if(btn) { btn.innerText = "Loading..."; btn.disabled = true; }
 
     AdController.show().then(() => {
-        if(source === 'task') window.fmc_balance += 500;
-        else if (source === 'slot') window.fmc_cards += 1; 
-        
+        window.fmc_balance += 500;
         window.processAdSuccess();
     }).catch(() => {
-        if(btn) { 
-            btn.innerHTML = source === 'slot' ? `<i class="fas fa-play-circle"></i> مشاهدة إعلان (+1 كارت)` : "Watch 📺"; 
-            btn.disabled = false; 
-        }
+        if(btn) { btn.innerHTML = "Watch 📺"; btn.disabled = false; }
         alert("يجب مشاهدة الإعلان للنهاية.");
     });
 };
-window.watchSlotAd = () => window.watchGlobalAd('slot');
 
+// ==========================================================
+// إعلانات السلوت المجانية (منفصلة تماماً 3 إعلانات كل 24 ساعة)
+// ==========================================================
+window.checkSlotAdsState = () => {
+    let dateStr = new Date().toDateString();
+    if(localStorage.getItem('fmc_slot_date') !== dateStr) {
+        localStorage.setItem('fmc_slot_date', dateStr);
+        localStorage.setItem('fmc_slot_daily_count', '0');
+    }
+    let count = parseInt(localStorage.getItem('fmc_slot_daily_count') || '0');
+    let btn = document.getElementById('btn-slot-ad');
+    let msg = document.getElementById('slot-ad-cooldown');
+    
+    if(btn && msg) {
+        if(count >= 3) {
+            btn.style.display = 'none';
+            msg.style.display = 'block';
+            msg.innerText = '✅ استنفدت الـ 3 محاولات المجانية اليوم. عد غداً!';
+        } else {
+            btn.style.display = 'flex';
+            msg.style.display = 'none';
+            btn.innerHTML = `<i class="fas fa-play-circle"></i> مشاهدة إعلان (+1 كارت) [${count}/3]`;
+        }
+    }
+};
+
+window.watchSlotAd = () => {
+    let count = parseInt(localStorage.getItem('fmc_slot_daily_count') || '0');
+    if(count >= 3) return;
+    if (!AdController) { alert("نظام الإعلانات غير جاهز."); return; }
+
+    let btn = document.getElementById('btn-slot-ad');
+    if(btn) { btn.innerText = "Loading..."; btn.disabled = true; }
+
+    AdController.show().then(() => {
+        window.fmc_cards += 1;
+        count++;
+        localStorage.setItem('fmc_slot_daily_count', count.toString());
+        window.updateUI();
+        window.checkSlotAdsState();
+        if(btn) btn.disabled = false;
+    }).catch(() => {
+        if(btn) btn.disabled = false;
+        window.checkSlotAdsState();
+        alert("يجب مشاهدة الإعلان للنهاية.");
+    });
+};
+
+// ==========================================================
+// العدادات المركزية
+// ==========================================================
 setInterval(() => {
-    window.checkAdGlobalState();
+    let cooldown = parseInt(localStorage.getItem('fmc_ad_cooldown') || '0');
+    let now = Date.now();
+    
+    if (cooldown > 0) {
+        if (now < cooldown) {
+            window.updateCooldownButtons();
+        } else {
+            localStorage.setItem('fmc_ad_cooldown', '0');
+            if(document.getElementById('room-tasks').classList.contains('active')) window.buildTasksList();
+        }
+    }
+
     if(window.autoMiningRate > 0) { window.fmc_balance += window.autoMiningRate; window.updateUI(); }
     if(window.currentEnergy < 500) { window.currentEnergy += 1; window.updateUI(); }
 }, 1000);
 
 // ==========================================================
-// زر الهدايا وإعلانات الدخول اليومي المتصاعدة
+// نافذة الدخول اليومي
 // ==========================================================
+document.addEventListener("DOMContentLoaded", () => {
+    let giftBtn = document.getElementById('btn-gift-modal');
+    if(giftBtn) {
+        giftBtn.addEventListener('click', window.toggleGiftModal);
+    }
+});
+
 window.toggleGiftModal = () => {
 let m = document.getElementById('daily-login-overlay');
 if(m) { 
@@ -810,29 +849,42 @@ let isAvailable = (now - lastClaimTime) >= (24 * 60 * 60 * 1000) || lastClaimTim
 
 for (let i = 1; i <= 7; i++) {
 const dayBox = document.createElement('div'); dayBox.className = 'daily-day-box';
+if(i === 7) dayBox.style.gridColumn = "span 3"; 
+
 let config = dailyRewardsConfig[i-1];
 
-let bonusText = `+${config.coins}🪙<br><span style="color:var(--c); font-size:9px;">🎁 +${config.cards} كارت</span>`;
-dayBox.innerHTML = `${dict.day_word} ${i}<br>${bonusText}`;
+let dayTitleHtml = `<div style="background:rgba(0,0,0,0.4); padding:6px; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; font-size:11px;">${dict.day_word} ${i}</div>`;
+let rewardsHtml = `<div style="padding:8px 0; display:flex; flex-direction:column; gap:4px; align-items:center;">
+    <span style="color:var(--gold); font-size:13px;">+${config.coins}🪙</span>
+    <span style="color:var(--c); font-size:11px;">+${config.cards}🎫</span>
+</div>`;
+
+let statusHtml = '';
 
 if (i <= currentClaimedDay) { 
-    dayBox.classList.add('claimed'); dayBox.innerHTML += "<br>✔"; 
+    dayBox.classList.add('claimed'); 
+    statusHtml = `<div style="background:var(--g); color:#000; padding:4px; font-size:10px; margin:4px; border-radius:6px;">✔ تم الاستلام</div>`;
 } else if (i === currentClaimedDay + 1 && isAvailable) {
-    dayBox.innerHTML += "<br>📺 مشاهدة";
+    statusHtml = `<div style="background:var(--p); color:#fff; padding:6px; font-size:11px; margin:4px; border-radius:6px; border:1px solid var(--c); animation: glowPulse 1.5s infinite alternate;"><i class="fas fa-play"></i> مشاهدة</div>`;
     dayBox.onclick = () => {
         if (!AdController) { alert("الإعلانات غير جاهزة، تأكد من اتصالك."); return; }
-        dayBox.innerHTML = "Loading..."; dayBox.style.pointerEvents = 'none';
+        dayBox.style.pointerEvents = 'none';
         AdController.show().then(() => {
             window.fmc_balance += config.coins; window.fmc_cards += config.cards;
             localStorage.setItem('fmc_v3_claimed_day', i.toString()); localStorage.setItem('fmc_v3_claim_time', Date.now().toString());
             alert("🎉 تم استلام مكافأة اليوم بنجاح!"); window.buildDailyGridUI(); window.updateUI(); 
         }).catch(() => {
-            dayBox.innerHTML = `${dict.day_word} ${i}<br>${bonusText}<br>📺 مشاهدة`; dayBox.style.pointerEvents = 'auto';
+            dayBox.style.pointerEvents = 'auto';
         });
     }; 
     dayBox.classList.add('active-day');
-} else { dayBox.innerHTML += "<br>🔒"; }
-box.appendChild(dayBox); }
+} else { 
+    statusHtml = `<div style="background:#222; color:#777; padding:4px; font-size:10px; margin:4px; border-radius:6px;">🔒 مقفول</div>`;
+}
+
+dayBox.innerHTML = dayTitleHtml + rewardsHtml + statusHtml;
+box.appendChild(dayBox); 
+}
 };
 
 window.updateUI = () => {
