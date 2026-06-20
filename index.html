@@ -43,14 +43,9 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 .card { background: var(--card-bg); border: 1px solid rgba(0, 242, 255, 0.15); border-radius: 24px; padding: 18px; margin-bottom: 15px; backdrop-filter: blur(10px); flex-shrink: 0;}
 
 .clicker-layout { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px 0 15px 0; background: radial-gradient(circle at center, rgba(0,242,255,0.06) 0%, transparent 70%); border-radius: 32px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.02); flex-shrink: 0;}
-.gift-box-badge { position: absolute; top: 15px; right: 20px; width: 48px; height: 48px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; }
+.gift-box-badge { position: absolute; top: 15px; right: 20px; width: 48px; height: 48px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; z-index: 100; transition: transform 0.2s;}
+.gift-box-badge:active { transform: scale(0.9); }
 .auto-mine-badge { display: none; font-size: 11px; color: var(--g); font-weight: 900; background: rgba(57,255,20,0.1); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(57,255,20,0.3); margin-top: 10px; animation: glowPulse 1.5s infinite alternate; }
-
-.daily-modal { display: none; flex-direction: column; background: rgba(5, 2, 25, 0.98); border: 2px solid var(--gold); border-radius: 24px; padding: 15px; margin-bottom: 15px; width: 100%; }
-.daily-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 12px; width: 100%; }
-.daily-day-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 8px 2px; border-radius: 12px; text-align: center; font-size: 10px; font-weight: 900; color: #aaa; cursor: pointer; min-height: 65px; display: flex; flex-direction: column; justify-content: center;}
-.daily-day-box.active-day { border-color: var(--gold); background: rgba(255,215,0,0.15); color: var(--gold); }
-.daily-day-box.claimed { border-color: var(--g) !important; background: rgba(57,255,20,0.1) !important; color: var(--g) !important; }
 
 .card-shop-box { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 15px; width: 100%; flex-shrink: 0;}
 .shop-card-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(0, 242, 255, 0.12); border-radius: 16px; padding: 10px 4px; text-align: center; display: flex; flex-direction: column; min-height: 125px; }
@@ -73,7 +68,6 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 .arcade-info-text p { font-size: 11px; color: #94a3b8; margin-top: 2px; }
 .btn-arcade-play { width: 100%; height: 44px; border-radius: 12px; background: linear-gradient(180deg, #1f2937, #111827); border: 1px solid rgba(255,255,255,0.05); color: #fff; font-weight: 900; font-size: 14px; cursor: pointer; }
 
-/* السلوت */
 .slot-housing { background: linear-gradient(145deg, #120734, #050114); border: 3px solid #250e55; border-radius: 24px; padding: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; flex-shrink: 0; min-height: 300px; position: relative; }
 .grid-3x3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: #000; padding: 12px; border-radius: 16px; border: 1px solid var(--p); width: 100%; max-width: 320px; }
 .grid-cell { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); aspect-ratio: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 45px; position: relative; z-index: 5; transition: box-shadow 0.3s ease; }
@@ -85,7 +79,6 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 #jackpot-alert h1 { color: var(--gold); font-size: 35px; text-shadow: 0 0 20px var(--gold); margin-bottom: 10px; animation: winPulse 0.4s infinite alternate; }
 #jackpot-alert p { color: #fff; font-size: 20px; font-weight: bold; }
 
-/* الروليت */
 .lucky-header-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 20px; flex-shrink: 0;}
 .lucky-card-panel { background: rgba(10, 6, 36, 0.7); border: 1px solid rgba(0, 242, 255, 0.15); border-radius: 12px; padding: 10px; text-align: center; }
 .lucky-card-panel span { display: block; font-size: 9px; color: #94a3b8; font-weight: 900; margin-bottom: 2px; }
@@ -117,17 +110,19 @@ header { height: 70px; background: rgba(2, 0, 15, 0.95); border-bottom: 1px soli
 @keyframes flameBurn { 0% { transform: scaleY(0.8); } 100% { transform: scaleY(1.3); } }
 .rocket-shake { animation: violentShake 0.05s infinite alternate; bottom: 20% !important; }
 @keyframes violentShake { 0% { margin-left: 2px; } 100% { margin-left: -2px; } }
-.mult-v { position: absolute; top: 35%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 60px; font-weight: 900; z-index: 20; text-align: center; text-shadow: 0 0 25px rgba(0,0,0,1); }
+
+.mult-v { position: absolute; top: 25%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 60px; font-weight: 900; z-index: 20; text-align: center; text-shadow: 0 0 25px rgba(0,0,0,1); }
 .color-blue { color: var(--c) !important; text-shadow: 0 0 20px var(--c) !important; }
+
+.rocket-status-panel { position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: auto; min-width: 200px; padding: 12px 25px; border-radius: 16px; text-align: center; font-weight: 900; font-size: 18px; z-index: 100; display: none; backdrop-filter: blur(15px); box-shadow: 0 0 40px rgba(0,0,0,0.9); }
+.panel-winner { background: rgba(57,255,20,0.2); border: 2px solid var(--g); color: var(--g); text-shadow: 0 0 15px var(--g); }
+.panel-loser { background: rgba(255, 0, 85, 0.2); border: 2px solid var(--red); color: var(--red); text-shadow: 0 0 15px var(--red); }
 
 .cockpit-panel { background: rgba(255, 255, 255, 0.03); border-radius: 16px; padding: 15px; display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 10px; align-items: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.05);}
 .side-control { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
 .side-control span { font-size: 10px; font-weight: 900; color: #cbd5e1; text-align: center; display: block; }
 .side-btn-row { display: flex; gap: 6px; justify-content: center; align-items: center; }
 .side-btn-row b { font-size: 14px; color: var(--gold); min-width: 35px; text-align: center; }
-.rocket-status-panel { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 320px; padding: 15px; border-radius: 16px; text-align: center; font-weight: 900; font-size: 20px; z-index: 100; display: none; backdrop-filter: blur(15px); box-shadow: 0 0 40px rgba(0,0,0,0.9); }
-.panel-winner { background: rgba(57,255,20,0.2); border: 2px solid var(--g); color: var(--g); text-shadow: 0 0 15px var(--g); }
-.panel-loser { background: rgba(255, 0, 85, 0.2); border: 2px solid var(--red); color: var(--red); text-shadow: 0 0 15px var(--red); }
 
 .history-bar { display: flex; gap: 8px; overflow-x: auto; padding: 10px; background: rgba(15, 10, 45, 0.4); border-radius: 18px; border: 1px solid rgba(188,19,254,0.2); margin-top: 5px; margin-bottom: 5px; min-height: 60px; align-items: center; white-space: nowrap !important; width: 100%; -webkit-overflow-scrolling: touch; flex-shrink: 0;}
 .hist-chip { display: flex; justify-content: center; align-items: center; padding: 0 14px; height: 40px; border-radius: 12px; font-size: 13px; font-weight: 900; background: rgba(255,255,255,0.05); color: #aaa; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0 !important; }
@@ -203,6 +198,11 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 .btn-confirm { flex: 2; background: linear-gradient(135deg, var(--g), #064e3b); border: 1px solid var(--g); color: #000; padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 900; box-shadow: 0 0 15px rgba(57,255,20,0.3); }
 .payment-status { margin-top: 15px; padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 900; background: rgba(255,215,0,0.1); color: var(--gold); border: 1px dashed var(--gold); display: none; }
 .slot-free-ads-container { background: rgba(255,255,255,0.02); border: 1px dashed rgba(0,242,255,0.2); border-radius: 16px; padding: 15px; margin-bottom: 15px; flex-shrink: 0; }
+
+/* تصميم نافذة الدخول اليومي الجديدة (Overlay) */
+.daily-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999999 !important; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); }
+.daily-modal-box { background: linear-gradient(145deg, #0a0624, #050212); border: 2px solid var(--gold); border-radius: 20px; padding: 20px; width: 100%; max-width: 360px; box-shadow: 0 0 40px rgba(255, 215, 0, 0.2); }
+.daily-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 15px; width: 100%; }
 </style>
 </head>
 <body>
@@ -214,15 +214,27 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 <span data-i18n="pay_req">المبلغ:</span>
 <b id="pay-amount-text" style="color: var(--gold); font-size: 18px;">0.00 TON</b>
 </div>
-<div class="payment-details" style="flex-direction: column; align-items: flex-start; gap: 5px;">
-<span data-i18n="pay_to">من محفظتك:</span>
-<b style="font-size: 10px; color: var(--g); word-break: break-all;" id="pay-wallet-text">جاري قراءة محفظتك...</b>
+<div class="payment-details" style="flex-direction: column; align-items: flex-start; gap: 5px; background: rgba(0, 242, 255, 0.05); border: 1px dashed var(--c);">
+<span style="font-size: 11px; color: #94a3b8;">محفظتك إنت (الدافع):</span>
+<b style="font-size: 13px; color: var(--c); word-break: break-all;" id="pay-wallet-text">جاري سحب عنوانك...</b>
 </div>
 <div id="payment-status" class="payment-status">جاري المعالجة... ⏳</div>
 <div class="payment-actions" id="payment-actions-row">
 <button class="btn-cancel" onclick="window.closePaymentModal()" data-i18n="btn_cancel">إلغاء</button>
 <button class="btn-confirm" id="btn-confirm-pay" data-i18n="btn_pay">دفع وتأكيد من المحفظة</button>
 </div>
+</div>
+</div>
+
+<!-- النافذة المنبثقة الفخمة للدخول اليومي -->
+<div id="daily-login-overlay" class="daily-modal-overlay">
+<div class="daily-modal-box">
+<div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+<b style="color:var(--gold); font-size: 16px;" data-i18n="daily_title">🎁 مكافأة الدخول اليومية</b>
+<i class="fas fa-times-circle" style="color:var(--red); font-size: 20px; cursor:pointer;" onclick="window.toggleGiftModal()"></i>
+</div>
+<p style="font-size: 11px; color: #94a3b8; margin-top: 8px; line-height: 1.4;">شاهد الإعلان للحصول على الكروت والعملات. الغياب لمدة 48 ساعة يعيدك لليوم الأول كعقاب.</p>
+<div class="daily-grid" id="daily-days-grid-box"></div>
 </div>
 </div>
 
@@ -260,14 +272,6 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 <div class="main-container">
 
 <div id="room-mining" class="page-room active">
-<div class="daily-modal" id="daily-login-hub">
-<div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-<b style="color:var(--gold)" data-i18n="daily_title">🎁 مكافأة الدخول اليومية</b>
-<i class="fas fa-times-circle" style="color:var(--red); cursor:pointer;" onclick="window.toggleGiftModal()"></i>
-</div>
-<p style="font-size: 10px; color: #94a3b8; margin-top: 5px;">شاهد الإعلان للحصول على الكروت. الغياب لـ 48 ساعة يعيدك لليوم الأول.</p>
-<div class="daily-grid" id="daily-days-grid-box"></div>
-</div>
 
 <p style="font-size: 11px; color: var(--c); font-weight: 900; margin-bottom: 5px;" data-i18n="shop_title">🛒 متجر الكروت:</p>
 <div class="card-shop-box">
@@ -456,9 +460,18 @@ async function registerReferral() {
 }
 registerReferral();
 
+// ==========================================
+// قواميس اللغات الكاملة الـ 8 لغات
+// ==========================================
 const translations = {
 ar: { balance: "الرصيد", cards: "الكروت", connect: "ربط المحفظة", nav_mining: "MINING", nav_games: "GAMES", nav_tasks: "TASKS", nav_ref: "REFERRAL", nav_wallet: "WALLET", daily_title: "🎁 مكافأة الدخول اليومية", shop_title: "🛒 متجر الكروت:", btn_upgrade: "UPGRADE MINING FARMS", casino_title: "<i class='fas fa-store'></i> VERSE CASINO STORE", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>نظام الإحالات</span>", ref_desc: "ادعُ 10 أصدقاء نشطين لضمان حصتك في الإيردروب!", copy_link: "انسخ رابط الدعوة", check_ref: "تحديث الإحالات الحقيقية", rewards_list: "🎁 قائمة المكافآت:", wallet_title: "📥 إعدادات محافظ السحب:", buy: "شراء", save: "حفظ العناوين", enter: "الدخول", back: "العودة", pay_confirm: "تأكيد وبدء الدفع", pay_req: "المبلغ المطلوب:", pay_to: "من محفظتك:", btn_cancel: "إلغاء", btn_pay: "دفع الآن", no_cards: "معكش كروت كفاية!", no_coins: "رصيدك غير كافي!", day_word: "يوم", copied: "تم نسخ الرابط!" },
-en: { balance: "Balance", cards: "Cards", connect: "Connect Wallet", nav_mining: "MINING", nav_games: "GAMES", nav_tasks: "TASKS", nav_ref: "REFERRAL", nav_wallet: "WALLET", daily_title: "🎁 Daily Reward", shop_title: "🛒 Card Shop:", btn_upgrade: "UPGRADE FARMS", casino_title: "<i class='fas fa-store'></i> VERSE CASINO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referral System</span>", ref_desc: "Invite 10 active friends to secure your airdrop!", copy_link: "Copy Invite Link", check_ref: "Sync Real Invites", rewards_list: "🎁 Rewards List:", wallet_title: "📥 Wallets:", buy: "Buy", save: "Save Details", enter: "ENTER", back: "Back", pay_confirm: "Confirm Payment", pay_req: "Amount:", pay_to: "From Your Wallet:", btn_cancel: "Cancel", btn_pay: "Pay Now", no_cards: "Not enough cards!", no_coins: "Not enough coins!", day_word: "Day", copied: "Copied!" }
+en: { balance: "Balance", cards: "Cards", connect: "Connect Wallet", nav_mining: "MINING", nav_games: "GAMES", nav_tasks: "TASKS", nav_ref: "REFERRAL", nav_wallet: "WALLET", daily_title: "🎁 Daily Reward", shop_title: "🛒 Card Shop:", btn_upgrade: "UPGRADE FARMS", casino_title: "<i class='fas fa-store'></i> VERSE CASINO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referral System</span>", ref_desc: "Invite 10 active friends to secure your airdrop!", copy_link: "Copy Invite Link", check_ref: "Sync Real Invites", rewards_list: "🎁 Rewards List:", wallet_title: "📥 Wallets:", buy: "Buy", save: "Save Details", enter: "ENTER", back: "Back", pay_confirm: "Confirm Payment", pay_req: "Amount:", pay_to: "From Your Wallet:", btn_cancel: "Cancel", btn_pay: "Pay Now", no_cards: "Not enough cards!", no_coins: "Not enough coins!", day_word: "Day", copied: "Copied!" },
+ru: { balance: "Баланс", cards: "Карты", connect: "Кошелек", nav_mining: "МАЙНИНГ", nav_games: "ИГРЫ", nav_tasks: "ЗАДАНИЯ", nav_ref: "РЕФЕРАЛЫ", nav_wallet: "КОШЕЛЕК", daily_title: "🎁 Ежедневная награда", shop_title: "🛒 Магазин:", btn_upgrade: "УЛУЧШИТЬ ФЕРМЫ", casino_title: "<i class='fas fa-store'></i> КАЗИНО", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Реферальная система</span>", ref_desc: "Пригласите 10 друзей!", copy_link: "Скопировать", check_ref: "Проверить друзей", rewards_list: "🎁 Список наград:", wallet_title: "📥 Кошельки:", buy: "Купить", save: "Сохранить", enter: "ИГРАТЬ", back: "Назад", pay_confirm: "Оплата", pay_req: "Сумма:", pay_to: "От кошелька:", btn_cancel: "Отмена", btn_pay: "Оплатить", no_cards: "Недостаточно карт!", no_coins: "Недостаточно монет!", day_word: "День", copied: "Скопировано!" },
+es: { balance: "Saldo", cards: "Cartas", connect: "Conectar", nav_mining: "MINERÍA", nav_games: "JUEGOS", nav_tasks: "TAREAS", nav_ref: "REFERIDOS", nav_wallet: "BILLETERA", daily_title: "🎁 Recompensa Diaria", shop_title: "🛒 Tienda:", btn_upgrade: "MEJORAR GRANJAS", casino_title: "<i class='fas fa-store'></i> CASINO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Sistema de Referidos</span>", ref_desc: "¡Invita a 10 amigos!", copy_link: "Copiar Enlace", check_ref: "Verificar", rewards_list: "🎁 Recompensas:", wallet_title: "📥 Billeteras:", buy: "Comprar", save: "Guardar", enter: "ENTRAR", back: "Atrás", pay_confirm: "Pago", pay_req: "Monto:", pay_to: "Desde Billetera:", btn_cancel: "Cancelar", btn_pay: "Pagar", no_cards: "¡Sin cartas!", no_coins: "¡Sin saldo!", day_word: "Día", copied: "¡Copiado!" },
+zh: { balance: "余额", cards: "卡片", connect: "连接钱包", nav_mining: "挖矿", nav_games: "游戏", nav_tasks: "任务", nav_ref: "推荐", nav_wallet: "钱包", daily_title: "🎁 每日奖励", shop_title: "🛒 商店:", btn_upgrade: "升级农场", casino_title: "<i class='fas fa-store'></i> 赌场", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>推荐系统</span>", ref_desc: "邀请10位活跃朋友获取空投！", copy_link: "复制链接", check_ref: "检查邀请", rewards_list: "🎁 奖励列表:", wallet_title: "📥 提款钱包:", buy: "购买", save: "保存", enter: "进入", back: "返回", pay_confirm: "确认付款", pay_req: "金额:", pay_to: "从钱包:", btn_cancel: "取消", btn_pay: "支付", no_cards: "卡片不足！", no_coins: "余额不足！", day_word: "天", copied: "已复制！" },
+hi: { balance: "बैलेंस", cards: "कार्ड", connect: "वॉलेट", nav_mining: "माइनिंग", nav_games: "गेम्स", nav_tasks: "टास्क", nav_ref: "रेफरल", nav_wallet: "वॉलेट", daily_title: "🎁 दैनिक इनाम", shop_title: "🛒 दुकान:", btn_upgrade: "अपग्रेड करें", casino_title: "<i class='fas fa-store'></i> कैसीनो", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>रेफरल सिस्टम</span>", ref_desc: "10 दोस्तों को आमंत्रित करें!", copy_link: "लिंक कॉपी करें", check_ref: "चेक करें", rewards_list: "🎁 इनाम सूची:", wallet_title: "📥 वॉलेट:", buy: "खरीदें", save: "सहेजें", enter: "प्रवेश करें", back: "वापस", pay_confirm: "भुगतान", pay_req: "राशि:", pay_to: "वॉलेट से:", btn_cancel: "रद्द करें", btn_pay: "भुगतान करें", no_cards: "पर्याप्त कार्ड नहीं!", no_coins: "पर्याप्त सिक्के नहीं!", day_word: "दिन", copied: "कॉपी किया गया!" },
+ur: { balance: "بیلنس", cards: "کارڈز", connect: "والٹ", nav_mining: "مائننگ", nav_games: "گیمز", nav_tasks: "ٹاسکس", nav_ref: "ریفرل", nav_wallet: "والٹ", daily_title: "🎁 روزانہ کا انعام", shop_title: "🛒 کارڈ شاپ:", btn_upgrade: "فارمز اپ گریڈ کریں", casino_title: "<i class='fas fa-store'></i> سائبر کیسینو", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>ریفرل سسٹم</span>", ref_desc: "10 دوستوں کو مدعو کریں!", copy_link: "لنک کاپی کریں", check_ref: "چیک کریں", rewards_list: "🎁 انعامات کی فہرست:", wallet_title: "📥 والٹس:", buy: "خریدیں", save: "محفوظ کریں", enter: "داخل ہوں", back: "پیچھے", pay_confirm: "ادائیگی", pay_req: "مطلوبہ رقم:", pay_to: "والٹ سے:", btn_cancel: "منسوخ کریں", btn_pay: "ادائیگی کریں", no_cards: "کافی کارڈ نہیں!", no_coins: "کافی سکے نہیں!", day_word: "دن", copied: "کاپی ہو گیا!" },
+tr: { balance: "Bakiye", cards: "Kartlar", connect: "Cüzdan", nav_mining: "MADENCİLİK", nav_games: "OYUNLAR", nav_tasks: "GÖREVLER", nav_ref: "REFERANS", nav_wallet: "CÜZDAN", daily_title: "🎁 Günlük Ödül", shop_title: "🛒 Mağaza:", btn_upgrade: "YÜKSELT", casino_title: "<i class='fas fa-store'></i> CASİNO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referans Sistemi</span>", ref_desc: "10 arkadaşınızı davet edin!", copy_link: "Kopyala", check_ref: "Kontrol Et", rewards_list: "🎁 Ödül Listesi:", wallet_title: "📥 Cüzdanlar:", buy: "Satın Al", save: "Kaydet", enter: "GİRİŞ", back: "Geri", pay_confirm: "Ödemeyi Onayla", pay_req: "Tutar:", pay_to: "Cüzdandan:", btn_cancel: "İptal", btn_pay: "Öde", no_cards: "Yeterli kart yok!", no_coins: "Yeterli bakiye yok!", day_word: "Gün", copied: "Kopyalandı!" }
 };
 
 window.fmc_lang = 'ar'; window.fmc_balance = 0; window.fmc_cards = 0; window.fmc_profit = 0;
@@ -498,18 +511,21 @@ window.buildDailyGridUI(); window.updateUI();
 
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({ manifestUrl: 'https://fmc-red.vercel.app/tonconnect-manifest.json' });
 
+window.userConnectedTonAddress = null;
+
 tonConnectUI.onStatusChange(wallet => {
 const btn = document.getElementById('ton-connect-btn'); const txt = document.getElementById('connect-text');
 if (wallet && wallet.account) {
     window.isWalletConnected = true; btn.classList.add('connected');
     const addr = wallet.account.address; 
+    window.userConnectedTonAddress = addr;
     txt.innerText = addr.substring(0,4) + '...' + addr.substring(addr.length-4) + " ✔";
     
-    // تعبئة عنوان محفظة اليوزر في قائمة السحب أوتوماتيك
     let wInput = document.getElementById('user-ton-withdrawal-input');
     if(wInput) wInput.value = addr;
 } else {
     window.isWalletConnected = false; btn.classList.remove('connected');
+    window.userConnectedTonAddress = null;
     txt.innerText = (translations[window.fmc_lang] || translations['en']).connect;
     let wInput = document.getElementById('user-ton-withdrawal-input');
     if(wInput) wInput.value = "";
@@ -522,16 +538,12 @@ window.openPaymentModal = (amount, callback) => {
 if(!tonConnectUI.connected) { tonConnectUI.openModal(); return; }
 document.getElementById('pay-amount-text').innerText = amount + " TON";
 
-// عرض محفظة اليوزر في واجهة الدفع بشفافية تامة
-try { 
-    if(tonConnectUI.account && tonConnectUI.account.address) {
-        let u = tonConnectUI.account.address; 
-        document.getElementById('pay-wallet-text').innerText = u.substring(0,6) + '...' + u.substring(u.length-4); 
-    } else {
-        document.getElementById('pay-wallet-text').innerText = "المحفظة غير متصلة";
-    }
-} catch(e) {
-    document.getElementById('pay-wallet-text').innerText = "خطأ في قراءة المحفظة";
+// عرض محفظة اليوزر في واجهة الدفع بشفافية
+let uAddr = window.userConnectedTonAddress || (tonConnectUI.account && tonConnectUI.account.address);
+if(uAddr) {
+    document.getElementById('pay-wallet-text').innerText = uAddr.substring(0,8) + '...' + uAddr.substring(uAddr.length-6); 
+} else {
+    document.getElementById('pay-wallet-text').innerText = "تعذر قراءة المحفظة";
 }
 
 let statusEl = document.getElementById('payment-status');
@@ -542,7 +554,7 @@ document.getElementById('btn-confirm-pay').onclick = async () => {
 document.getElementById('payment-actions-row').style.display = 'none';
 statusEl.innerHTML = '⏳ جاري فتح تطبيق المحفظة للتأكيد...'; statusEl.style.background = 'rgba(0,242,255,0.1)'; statusEl.style.color = 'var(--c)'; statusEl.style.borderColor = 'var(--c)';
 try {
-// أمر الدفع يذهب لمحفظة المطور (إعداداتك)
+// إرسال الفلوس إلى محفظتك كمطور
 const transaction = { validUntil: Math.floor(Date.now() / 1000) + 120, messages: [ { address: window.dev_ton_wallet, amount: Math.floor(amount * 1000000000).toString() } ] };
 const result = await tonConnectUI.sendTransaction(transaction);
 if(result) { statusEl.innerHTML = '✅ تم تأكيد الدفع بنجاح!'; statusEl.style.color = 'var(--g)'; statusEl.style.borderColor = 'var(--g)'; statusEl.style.background = 'rgba(57,255,20,0.1)'; setTimeout(() => { window.closePaymentModal(); if(callback) callback(); }, 2000); }
@@ -601,7 +613,7 @@ try {
 let response = await fetch(`${GOOGLE_SCRIPT_URL}?user_id=${myUserId}`); let data = await response.json();
 window.currentReferrals = data.real_referral_count || 0; window.updateReferralProgress(window.currentReferrals);
 alert(`تم التحديث!\nعدد الإحالات الحقيقي: ${window.currentReferrals}`);
-} catch (e) { alert("حدث خطأ في الاتصال."); } finally { btn.disabled = false; icon.classList.remove('spin-anim'); btn.innerHTML = `<i class="fas fa-sync-alt" id="sync-icon"></i> تحديث الإحالات החقيقية`; }
+} catch (e) { alert("حدث خطأ في الاتصال."); } finally { btn.disabled = false; icon.classList.remove('spin-anim'); btn.innerHTML = `<i class="fas fa-sync-alt" id="sync-icon"></i> تحديث الإحالات الحقيقية`; }
 };
 
 window.buildReferralList = () => {
@@ -628,7 +640,7 @@ window.updateUI(); window.buildReferralList();
 };
 
 // ==========================================================
-// النظام الموحد للـ 50 إعلان وراحة 10 دقائق والبازل
+// النظام الموحد للـ 50 إعلان كل 12 ساعة وراحة 10 دقائق
 // ==========================================================
 window.updatePuzzleUI = () => {
     let batchAds = parseInt(localStorage.getItem('fmc_ads_batch') || '0');
@@ -644,9 +656,13 @@ window.updatePuzzleUI = () => {
 };
 
 window.checkAdGlobalState = () => {
-    let dateStr = new Date().toDateString();
-    if(localStorage.getItem('fmc_ads_date') !== dateStr) {
-        localStorage.setItem('fmc_ads_date', dateStr);
+    let lastResetStr = localStorage.getItem('fmc_ads_reset_time') || '0';
+    let lastReset = parseInt(lastResetStr);
+    let now = Date.now();
+    let twelveHours = 12 * 60 * 60 * 1000;
+    
+    if (now - lastReset > twelveHours) {
+        localStorage.setItem('fmc_ads_reset_time', now.toString());
         localStorage.setItem('fmc_ads_today', '0');
         localStorage.setItem('fmc_ads_batch', '0');
         localStorage.setItem('fmc_ad_cooldown', '0');
@@ -654,15 +670,15 @@ window.checkAdGlobalState = () => {
 
     let todayAds = parseInt(localStorage.getItem('fmc_ads_today') || '0');
     let cooldown = parseInt(localStorage.getItem('fmc_ad_cooldown') || '0');
-    let now = Date.now();
     
-    if(document.getElementById('ads-counter-text')) document.getElementById('ads-counter-text').innerText = todayAds;
+    let counterEl = document.getElementById('ads-counter-text');
+    if(counterEl) counterEl.innerText = todayAds;
     
     let isLimitReached = todayAds >= 50;
     let isCooldown = now < cooldown;
     let msg = "";
 
-    if (isLimitReached) msg = "🔴 استنفدت الـ 50 إعلان اليوم. عد غداً!";
+    if (isLimitReached) msg = "🔴 استنفدت الـ 50 إعلان. عد بعد 12 ساعة!";
     else if (isCooldown) {
         let remaining = Math.ceil((cooldown - now) / 1000);
         let m = Math.floor(remaining / 60); let s = remaining % 60;
@@ -771,11 +787,14 @@ setInterval(() => {
 }, 1000);
 
 // ==========================================================
-// إعلانات الدخول اليومي المتصاعدة
+// زر الهدايا وإعلانات الدخول اليومي المتصاعدة
 // ==========================================================
 window.toggleGiftModal = () => {
-let m = document.getElementById('daily-login-hub');
-if(m) { m.style.display = (m.style.display === 'flex') ? 'none' : 'flex'; if(m.style.display === 'flex') window.buildDailyGridUI(); }
+let m = document.getElementById('daily-login-overlay');
+if(m) { 
+    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex'; 
+    if(m.style.display === 'flex') window.buildDailyGridUI(); 
+}
 };
 
 window.buildDailyGridUI = () => {
@@ -828,9 +847,6 @@ if(document.getElementById('lucky-wallet-v')) document.getElementById('lucky-wal
 if(document.getElementById('lucky-profit-v')) document.getElementById('lucky-profit-v').innerText = window.fmc_profit.toLocaleString();
 };
 
-// ==========================================================
-// السلوت والجاك بوت اليومي
-// ==========================================================
 window.spinSlot = () => {
 if(window.isSlotSpinningActive) return;
 let dict = translations[window.fmc_lang] || translations['en'];
@@ -885,9 +901,6 @@ window.updateUI(); window.isSlotSpinningActive = false;
 }, 50);
 };
 
-// ==========================================================
-// الروليت وجاك بوت السلطة
-// ==========================================================
 window.luckyItemsConfig = [
 { id: 0, icon: '🥩', mult: 25, type: 'meat', prob: 0.02, degree: -90 },
 { id: 1, icon: '🍅', mult: 5, type: 'veg', prob: 0.20, degree: -45 },
@@ -993,7 +1006,7 @@ let flyInterval = setInterval(() => {
 mult += 0.01; text.innerText = mult.toFixed(2) + 'x';
 if(mult >= target && !hasCashedOut && target <= crashPoint) {
 hasCashedOut = true; let winAmount = bet * target; window.fmc_balance += winAmount; window.fmc_profit += (winAmount - bet); window.updateUI();
-status.style.display = 'block'; status.className = 'rocket-status-panel panel-winner'; status.innerText = `Win! ${target.toFixed(2)}x\nFlying... 👀`; hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(57,255,20,0.15); color: var(--g); border: 1px solid rgba(57,255,20,0.3); display: inline-block; flex-shrink: 0;">${target.toFixed(2)}x</div>` + hist.innerHTML;
+status.style.display = 'block'; status.className = 'rocket-status-panel panel-winner'; status.innerText = `Win!\n${target.toFixed(2)}x`; hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(57,255,20,0.15); color: var(--g); border: 1px solid rgba(57,255,20,0.3); display: inline-block; flex-shrink: 0;">${target.toFixed(2)}x</div>` + hist.innerHTML;
 }
 if(mult >= crashPoint) { clearInterval(flyInterval); finishRocket(crashPoint, hasCashedOut); } }, 60);
 function finishRocket(finalCrash, cashedOut) {
