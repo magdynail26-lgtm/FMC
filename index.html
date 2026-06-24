@@ -405,7 +405,7 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
 </div>
 
 <div id="room-tasks" class="page-room">
-<h4 style="font-size:14px; font-weight:900; color:var(--c); margin-bottom:10px;">إعلانات المهام (<span id="ads-counter-text">0</span>/50)</h4>
+<h4 style="font-size:14px; font-weight:900; color:var(--c); margin-bottom:10px;">إعلانات المهام (50 إعلان)</h4>
 <div class="puzzle-container">
 <p style="font-size:12px; font-weight:900; color:var(--g); margin-bottom:10px;">🧩 شاهد 3 إعلانات للحصول على كارت</p>
 <div class="puzzle-slots">
@@ -414,13 +414,12 @@ nav { height: 70px; background: #02000f; border-top: 1px solid rgba(0, 242, 255,
     <div class="puzzle-piece" id="p-piece2">3</div>
 </div>
 </div>
-<div class="cooldown-timer" id="cooldown-timer-display"></div>
 <div id="tasks-list-container"></div>
 </div>
 
 <div id="room-wallet" class="page-room">
 <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 15px;" data-i18n="wallet_title">📥 إعدادات محافظ السحب:</h3>
-<div class="wallet-row"><div class="wallet-title" style="color: #0088cc;">💎 TON Wallet Address</div><input type="text" id="user-ton-withdrawal-input" class="wallet-input" placeholder="UQ..."></div>
+<div class="wallet-row"><div class="wallet-title" style="color: #0088cc;">💎 TON Wallet Address</div><input type="text" id="user-ton-withdrawal-input" class="wallet-input" placeholder="UQ..." readonly></div>
 <div class="wallet-row"><div class="wallet-title" style="color: #cbd5e1;">🖤 OKX Address</div><input type="text" class="wallet-input" placeholder="0x..."></div>
 <div class="wallet-row"><div class="wallet-title" style="color: #f3ba2f;">💛 Binance Pay ID</div><input type="text" class="wallet-input" placeholder="Pay ID..."></div>
 <button class="btn-save-neon" onclick="alert('Saved!')" data-i18n="save">حفظ العناوين</button>
@@ -450,7 +449,7 @@ const startParam = tg.initDataUnsafe?.start_param;
 const BOT_USERNAME = "FMC_Verse_Drop_bot";
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQGjMw11aiUxwSyjhwWGhzJvXIEJ9rg6u23uhPnKs8A1pk56M4dZJ5gjoZw4JWcDXc/exec";
 
-// محفظة المطور لاستقبال الفلوس (مخفية)
+// محفظة المطور لاستقبال الفلوس
 window.dev_ton_wallet = "UQA-nWewa9gdU0Oa7Ua__Gcwi1DdAjP6RxZ1s9OarjvEVuug";
 
 let AdController = null;
@@ -477,9 +476,6 @@ ur: { balance: "بیلنس", cards: "کارڈز", connect: "والٹ", nav_minin
 tr: { balance: "Bakiye", cards: "Kartlar", connect: "Cüzdan", nav_mining: "MADENCİLİK", nav_games: "OYUNLAR", nav_tasks: "GÖREVLER", nav_ref: "REFERANS", nav_wallet: "CÜZDAN", daily_title: "🎁 Günlük Ödül", shop_title: "🛒 Mağaza:", btn_upgrade: "YÜKSELT", casino_title: "<i class='fas fa-store'></i> CASİNO", ref_title: "<i class='fas fa-users' style='color:var(--c)'></i> <span>Referans Sistemi</span>", ref_desc: "10 arkadaşınızı davet edin!", copy_link: "Kopyala", check_ref: "Kontrol Et", rewards_list: "🎁 Ödül Listesi:", wallet_title: "📥 Cüzdanlar:", buy: "Satın Al", save: "Kaydet", enter: "GİRİŞ", back: "Geri", pay_confirm: "Ödemeyi Onayla", pay_req: "Tutar:", pay_to: "Cüzdandan:", btn_cancel: "İptal", btn_pay: "Öde", no_cards: "Yeterli kart yok!", no_coins: "Yeterli bakiye yok!", day_word: "Gün", copied: "Kopyalandı!" }
 };
 
-// ==========================================
-// ربط بيانات اللعبة بالذاكرة المحلية الجديدة (عشان يصفر القديم ويحفظ الجديد)
-// ==========================================
 window.fmc_lang = 'ar'; 
 window.fmc_balance = parseInt(localStorage.getItem('fmc_v4_balance') || '0');
 window.fmc_cards = parseInt(localStorage.getItem('fmc_v4_cards') || '0');
@@ -507,7 +503,8 @@ let refMilestones = [
 {count:100, cards:200, coins: 1000000}, {count:500, cards:1000, coins: 5000000, extra: '+ 2 TON'}
 ];
 const icons = ['🍉','🍋','🍒','🍎','🍇','💎','🍔','🔔','🎰'];
-const payTable = { '💎': 25, '🎰': 20, '🔔': 15, '🍒': 10, '🍎': 5, '🍇': 4, '🍋': 3, '🍉': 2, '🍔': 1 };
+// 💸 زيادة الأرباح الجبارة للسلوتس
+const payTable = { '💎': 300, '🎰': 200, '🔔': 150, '🍒': 100, '🍎': 80, '🍇': 50, '🍋': 40, '🍉': 30, '🍔': 20 };
 const paylinesConfig = [ { name: "H1", cells: [0, 1, 2] }, { name: "H2", cells: [3, 4, 5] }, { name: "H3", cells: [6, 7, 8] }, { name: "V1", cells: [0, 3, 6] }, { name: "V2", cells: [1, 4, 7] }, { name: "V3", cells: [2, 5, 8] }, { name: "D1", cells: [0, 4, 8] }, { name: "D2", cells: [6, 4, 2] }, { name: "Z1", cells: [3, 1, 5] } ];
 
 window.toggleLanguageDropdown = () => { const drop = document.getElementById('real-lang-dropdown'); if(drop) drop.style.display = (drop.style.display === 'flex') ? 'none' : 'flex'; };
@@ -524,22 +521,40 @@ const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({ manifestUrl: 'https://fmc
 
 window.userConnectedTonAddress = null;
 
+// التحديث الأول: حفظ المحفظة في الذاكرة
 tonConnectUI.onStatusChange(wallet => {
 const btn = document.getElementById('ton-connect-btn'); const txt = document.getElementById('connect-text');
+const wInput = document.getElementById('user-ton-withdrawal-input');
+
 if (wallet && wallet.account) {
     window.isWalletConnected = true; btn.classList.add('connected');
     const addr = wallet.account.address; 
     window.userConnectedTonAddress = addr;
+    
+    // حفظ العنوان في الذاكرة
+    localStorage.setItem('fmc_v4_ton_wallet_addr', addr);
+    
     txt.innerText = addr.substring(0,4) + '...' + addr.substring(addr.length-4) + " ✔";
-    let wInput = document.getElementById('user-ton-withdrawal-input');
     if(wInput) wInput.value = addr;
 } else {
     window.isWalletConnected = false; btn.classList.remove('connected');
     window.userConnectedTonAddress = null;
+    
+    // مسح العنوان لو فك الربط
+    localStorage.removeItem('fmc_v4_ton_wallet_addr');
+    
     txt.innerText = (translations[window.fmc_lang] || translations['en']).connect;
-    let wInput = document.getElementById('user-ton-withdrawal-input');
     if(wInput) wInput.value = "";
 }
+});
+
+// استعادة المحفظة عند فتح الصفحة
+window.addEventListener('load', () => {
+    const savedAddr = localStorage.getItem('fmc_v4_ton_wallet_addr');
+    const wInput = document.getElementById('user-ton-withdrawal-input');
+    if (savedAddr && wInput) {
+        wInput.value = savedAddr;
+    }
 });
 
 window.connectTonWallet = async () => { if (tonConnectUI.connected) await tonConnectUI.disconnect(); else await tonConnectUI.openModal(); };
@@ -548,7 +563,7 @@ window.openPaymentModal = (amount, callback) => {
 if(!tonConnectUI.connected) { tonConnectUI.openModal(); return; }
 document.getElementById('pay-amount-text').innerText = amount + " TON";
 
-let uAddr = window.userConnectedTonAddress || (tonConnectUI.account && tonConnectUI.account.address);
+let uAddr = window.userConnectedTonAddress || (tonConnectUI.account && tonConnectUI.account.address) || localStorage.getItem('fmc_v4_ton_wallet_addr');
 if(uAddr) {
     document.getElementById('pay-wallet-text').innerText = uAddr.substring(0,8) + '...' + uAddr.substring(uAddr.length-6); 
 } else {
@@ -662,100 +677,59 @@ window.updatePuzzleUI = () => {
     }
 };
 
-window.checkAdGlobalState = () => {
-    let lastResetStr = localStorage.getItem('fmc_v4_ads_reset_time') || '0';
-    let lastReset = parseInt(lastResetStr);
-    let now = Date.now();
-    let twelveHours = 12 * 60 * 60 * 1000;
-    
-    if (now - lastReset > twelveHours) {
-        localStorage.setItem('fmc_v4_ads_reset_time', now.toString());
-        localStorage.setItem('fmc_v4_ads_today', '0');
-        localStorage.setItem('fmc_v4_ads_batch', '0');
-        localStorage.setItem('fmc_v4_ad_cooldown', '0');
-    }
-
-    let todayAds = parseInt(localStorage.getItem('fmc_v4_ads_today') || '0');
-    let cooldown = parseInt(localStorage.getItem('fmc_v4_ad_cooldown') || '0');
-    
-    if(document.getElementById('ads-counter-text')) document.getElementById('ads-counter-text').innerText = todayAds;
-    
-    let isLimitReached = todayAds >= 50;
-    let isCooldown = now < cooldown;
-    
-    return { isLimitReached, isCooldown, cooldownTime: cooldown };
-};
-
-window.updateCooldownButtons = () => {
-    let state = window.checkAdGlobalState();
-    let now = Date.now();
-
-    if (state.isCooldown) {
-        let remaining = Math.ceil((state.cooldownTime - now) / 1000);
-        let m = Math.floor(remaining / 60); let s = remaining % 60;
-        let timeStr = `⏳ ${m}:${s < 10 ? '0':''}${s}`;
-        document.querySelectorAll('.btn-cooldown-timer').forEach(b => {
-            b.innerText = timeStr;
-        });
-    }
-};
-
 window.processAdSuccess = () => {
-    let todayAds = parseInt(localStorage.getItem('fmc_v4_ads_today') || '0') + 1;
     let batchAds = parseInt(localStorage.getItem('fmc_v4_ads_batch') || '0') + 1;
-    localStorage.setItem('fmc_v4_ads_today', todayAds.toString());
-
     if (batchAds % 3 === 0) { window.fmc_cards += 1; }
-
-    if(batchAds >= 6) {
-        localStorage.setItem('fmc_v4_ad_cooldown', (Date.now() + 10 * 60 * 1000).toString());
-        localStorage.setItem('fmc_v4_ads_batch', '0');
-    } else {
-        localStorage.setItem('fmc_v4_ads_batch', batchAds.toString());
-    }
-    
+    localStorage.setItem('fmc_v4_ads_batch', batchAds.toString());
     window.updateUI();
     if(document.getElementById('room-tasks').classList.contains('active')) { window.buildTasksList(); }
 };
 
+// التحديث الثاني: بناء 50 إعلان كل واحد ليه Cooldown 6 ساعات
 window.buildTasksList = () => {
     const container = document.getElementById('tasks-list-container'); if(!container) return; container.innerHTML = '';
-    let todayAds = parseInt(localStorage.getItem('fmc_v4_ads_today') || '0');
-    let state = window.checkAdGlobalState();
     window.updatePuzzleUI();
 
+    let now = Date.now();
     for (let i = 1; i <= 50; i++) {
         const card = document.createElement('div'); card.className = 'task-card';
-        let isDone = i <= todayAds;
+        
+        let lastWatched = parseInt(localStorage.getItem('fmc_v4_ad_task_' + i) || '0');
+        let isCooldown = (now - lastWatched) < (6 * 60 * 60 * 1000);
+        
         let btnHTML = '';
         
-        if(isDone) {
-            btnHTML = `<button class="btn-watch" disabled style="background:#222 !important;color:#777 !important;">✔ Done</button>`;
-        } else if(state.isLimitReached) {
-            btnHTML = `<button class="btn-watch" disabled style="background:#555 !important;">🔒 غداً</button>`;
-        } else if(state.isCooldown) {
-            btnHTML = `<button class="btn-watch btn-cooldown-timer" disabled style="background:#555 !important; font-weight:bold; font-size:12px;">⏳ 10:00</button>`;
+        if(isCooldown) {
+            let remainingMs = (lastWatched + (6 * 60 * 60 * 1000)) - now;
+            let h = Math.floor(remainingMs / 3600000);
+            let m = Math.floor((remainingMs % 3600000) / 60000);
+            btnHTML = `<button class="btn-watch" disabled style="background:#333 !important; color:#aaa !important; cursor:not-allowed;">⏳ ${h}h ${m}m</button>`;
         } else {
             btnHTML = `<button class="btn-watch" id="tk-btn-${i}" onclick="window.watchGlobalAd('task', ${i})">Watch 📺</button>`;
         }
         card.innerHTML = `<div class="task-left"><h4>Sponsor Ad #${i}</h4><p>+500 Coins</p></div>${btnHTML}`;
         container.appendChild(card); 
     }
-
-    if (state.isCooldown) window.updateCooldownButtons();
 };
 
 window.watchGlobalAd = (source, num = 0) => {
-    let state = window.checkAdGlobalState();
-    if(state.isLimitReached || state.isCooldown) { alert("الإعلانات غير متاحة الآن."); return; }
+    let lastWatched = parseInt(localStorage.getItem('fmc_v4_ad_task_' + num) || '0');
+    if (Date.now() - lastWatched < (6 * 60 * 60 * 1000)) { alert("هذا الإعلان متاح بعد 6 ساعات."); return; }
+    
     if (!AdController) { alert("نظام الإعلانات غير جاهز."); return; }
     
     let btn = document.getElementById('tk-btn-' + num);
     if(btn) { btn.innerText = "Loading..."; btn.disabled = true; }
 
-    AdController.show().then(() => {
-        window.fmc_balance += 500;
-        window.processAdSuccess();
+    AdController.show().then((result) => {
+        if (result && result.done) {
+            window.fmc_balance += 500;
+            localStorage.setItem('fmc_v4_ad_task_' + num, Date.now().toString());
+            window.processAdSuccess();
+        } else {
+            if(btn) { btn.innerHTML = "Watch 📺"; btn.disabled = false; }
+            alert("يجب مشاهدة الإعلان للنهاية.");
+        }
     }).catch(() => {
         if(btn) { btn.innerHTML = "Watch 📺"; btn.disabled = false; }
         alert("يجب مشاهدة الإعلان للنهاية.");
@@ -808,18 +782,6 @@ window.watchSlotAd = () => {
 };
 
 setInterval(() => {
-    let cooldown = parseInt(localStorage.getItem('fmc_v4_ad_cooldown') || '0');
-    let now = Date.now();
-    
-    if (cooldown > 0) {
-        if (now < cooldown) {
-            window.updateCooldownButtons();
-        } else {
-            localStorage.setItem('fmc_v4_ad_cooldown', '0');
-            if(document.getElementById('room-tasks').classList.contains('active')) window.buildTasksList();
-        }
-    }
-
     if(window.autoMiningRate > 0) { window.fmc_balance += window.autoMiningRate; window.updateUI(); }
     if(window.currentEnergy < 500) { window.currentEnergy += 1; window.updateUI(); }
 }, 1000);
@@ -903,6 +865,7 @@ localStorage.setItem('fmc_v4_cards', window.fmc_cards.toString());
 localStorage.setItem('fmc_v4_profit', window.fmc_profit.toString());
 };
 
+// التحديث الثالث: أرباح السلوتس المبالغ فيها
 window.spinSlot = () => {
 if(window.isSlotSpinningActive) return;
 let dict = translations[window.fmc_lang] || translations['en'];
@@ -922,25 +885,33 @@ clearInterval(spinInterval);
 
 let lastJackpot = parseInt(localStorage.getItem('fmc_v4_last_jackpot') || '0');
 let canHitJackpot = (Date.now() - lastJackpot) > 24 * 60 * 60 * 1000;
-let isJackpot = canHitJackpot && (Math.random() < 0.05);
+let isJackpot = canHitJackpot && (Math.random() < 0.05); // فرصة يومية للجاكبوت
 
 let resultIcons = []; let totalWin = 0; let hist = document.getElementById('slot-hist-bar');
 
 if (isJackpot) {
     localStorage.setItem('fmc_v4_last_jackpot', Date.now().toString());
     resultIcons = Array(9).fill('🎰'); for(let i=0; i<9; i++) { cells[i].innerText = resultIcons[i]; cells[i].classList.add('jackpot-highlight'); }
-    let jackpotWin = totalCost * 200;
+    // جاكبوت بيضرب الرقم في 1000!
+    let jackpotWin = totalCost * 1000;
     window.fmc_balance += jackpotWin; window.fmc_profit += jackpotWin;
     document.getElementById('jackpot-amount-txt').innerText = `+${jackpotWin.toLocaleString()}`; document.getElementById('jackpot-alert').style.display = 'flex'; setTimeout(() => { document.getElementById('jackpot-alert').style.display = 'none'; }, 4000);
     hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,215,0,0.2); color: var(--gold); border: 1px solid var(--gold); display: inline-block; flex-shrink: 0;">DAILY JACKPOT! (+${jackpotWin.toLocaleString()})</div>` + hist.innerHTML;
 } else {
     for(let i=0; i<9; i++) resultIcons.push(icons[Math.floor(Math.random()*icons.length)]);
-    let winChance = 0.1; if(window.slotLinesActive >= 4 && window.slotLinesActive <= 6) winChance = 0.35; else if(window.slotLinesActive >= 7) winChance = 0.60;
+    
+    // 💸 نسبة مكسب خرافية 
+    let winChance = 0.60; 
+    if(window.slotLinesActive >= 4 && window.slotLinesActive <= 6) winChance = 0.85; 
+    else if(window.slotLinesActive >= 7) winChance = 0.95; // 95% فرصة مكسب
+    
     if(Math.random() < winChance) {
         let randomWinIcon = icons[Math.floor(Math.random()*icons.length)]; let activeLine = paylinesConfig[Math.floor(Math.random() * window.slotLinesActive)];
         resultIcons[activeLine.cells[0]] = randomWinIcon; resultIcons[activeLine.cells[1]] = randomWinIcon; resultIcons[activeLine.cells[2]] = randomWinIcon;
     }
+    
     for(let i=0; i<9; i++) cells[i].innerText = resultIcons[i];
+    
     for(let i=0; i<window.slotLinesActive; i++) {
         let line = paylinesConfig[i]; let i1 = resultIcons[line.cells[0]]; let i2 = resultIcons[line.cells[1]]; let i3 = resultIcons[line.cells[2]];
         if(i1 === i2 && i2 === i3) {
