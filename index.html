@@ -479,7 +479,7 @@ const startParam = tg.initDataUnsafe?.start_param;
 const BOT_USERNAME = "FMC_Verse_Drop_bot";
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQGjMw11aiUxwSyjhwWGhzJvXIEJ9rg6u23uhPnKs8A1pk56M4dZJ5gjoZw4JWcDXc/exec";
 
-// المحفظة المخصصة للتحويلات
+// المحفظة المخصصة للتحويلات (التي سيتم استقبال الأموال عليها)
 window.dev_ton_wallet = "UQA-nWewa9gdU0Oa7Ua__Gcwi1DdAjP6RxZ1s9OarjvEVuug";
 
 let AdController = null;
@@ -525,15 +525,25 @@ let dailyRewardsConfig = [
     { coins: 5000, cards: 7 }
 ];
 
+// 🌟 تحديث مصفوفة الإحالات لإضافة الأرقام المطلوبة (35, 40, 45, 50) مع الحفاظ على القديم والنهايات
 let refMilestones = [ 
-{count:3, cards:5, coins: 15000}, {count:5, cards:10, coins: 30000},
-{count:7, cards:15, coins: 50000}, {count:10, cards:20, coins: 80000},
-{count:15, cards:30, coins: 120000}, {count:20, cards:40, coins: 180000},
-{count:25, cards:50, coins: 250000}, {count:30, cards:60, coins: 300000},
-{count:100, cards:200, coins: 1000000}, {count:500, cards:1000, coins: 5000000, extra: '+ 2 TON'}
+    {count:3, cards:5, coins: 15000}, {count:5, cards:10, coins: 30000},
+    {count:7, cards:15, coins: 50000}, {count:10, cards:20, coins: 80000},
+    {count:15, cards:30, coins: 120000}, {count:20, cards:40, coins: 180000},
+    {count:25, cards:50, coins: 250000}, {count:30, cards:60, coins: 300000},
+    // تمت الإضافة بناءً على طلبك 👇
+    {count:35, cards:70, coins: 350000},
+    {count:40, cards:80, coins: 400000},
+    {count:45, cards:90, coins: 450000},
+    {count:50, cards:100, coins: 500000},
+    // الحفاظ على الـ 100 و 500 و 1000 👇
+    {count:100, cards:200, coins: 1000000}, {count:500, cards:1000, coins: 5000000, extra: '+ 2 TON'},
+    {count:1000, cards:2000, coins: 10000000, extra: '+ 5 TON'}
 ];
+
+// 🌟 تعديل "مضاعفات المكسب" للسلوت عشان الأرقام تبقى معقولة ومناسبة لنسبة الـ 60%
 const icons = ['🍉','🍋','🍒','🍎','🍇','💎','🍔','🔔','🎰'];
-const payTable = { '💎': 300, '🎰': 200, '🔔': 150, '🍒': 100, '🍎': 80, '🍇': 50, '🍋': 40, '🍉': 30, '🍔': 20 };
+const payTable = { '💎': 200, '🎰': 100, '🔔': 60, '🍒': 40, '🍎': 30, '🍇': 20, '🍋': 15, '🍉': 10, '🍔': 5 };
 const paylinesConfig = [ { name: "H1", cells: [0, 1, 2] }, { name: "H2", cells: [3, 4, 5] }, { name: "H3", cells: [6, 7, 8] }, { name: "V1", cells: [0, 3, 6] }, { name: "V2", cells: [1, 4, 7] }, { name: "V3", cells: [2, 5, 8] }, { name: "D1", cells: [0, 4, 8] }, { name: "D2", cells: [6, 4, 2] }, { name: "Z1", cells: [3, 1, 5] } ];
 
 window.toggleLanguageDropdown = () => { const drop = document.getElementById('real-lang-dropdown'); if(drop) drop.style.display = (drop.style.display === 'flex') ? 'none' : 'flex'; };
@@ -937,6 +947,7 @@ localStorage.setItem('fmc_v5_cards', window.fmc_cards.toString());
 localStorage.setItem('fmc_v5_profit', window.fmc_profit.toString());
 };
 
+// 🌟 تحديث لعبة السلوت (الجاكبوت كل 24 ساعة - نسبة المكسب 60% مع توازن الأرقام)
 window.spinSlot = () => {
 if(window.isSlotSpinningActive) return;
 let dict = translations[window.fmc_lang] || translations['en'];
@@ -954,25 +965,24 @@ spinCount++;
 if(spinCount > 15) {
 clearInterval(spinInterval);
 
+// 1. نظام الجاك بوت (قفل 24 ساعة)
 let lastJackpot = parseInt(localStorage.getItem('fmc_v5_last_jackpot') || '0');
 let canHitJackpot = (Date.now() - lastJackpot) > 24 * 60 * 60 * 1000;
-let isJackpot = canHitJackpot && (Math.random() < 0.05); 
+let isJackpot = canHitJackpot && (Math.random() < 0.01); 
 
 let resultIcons = []; let totalWin = 0; let hist = document.getElementById('slot-hist-bar');
 
 if (isJackpot) {
     localStorage.setItem('fmc_v5_last_jackpot', Date.now().toString());
     resultIcons = Array(9).fill('🎰'); for(let i=0; i<9; i++) { cells[i].innerText = resultIcons[i]; cells[i].classList.add('jackpot-highlight'); }
-    let jackpotWin = totalCost * 1000;
+    let jackpotWin = totalCost * 100;
     window.fmc_balance += jackpotWin; window.fmc_profit += jackpotWin;
     document.getElementById('jackpot-amount-txt').innerText = `+${jackpotWin.toLocaleString()}`; document.getElementById('jackpot-alert').style.display = 'flex'; setTimeout(() => { document.getElementById('jackpot-alert').style.display = 'none'; }, 4000);
     hist.innerHTML = `<div style="padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 900; background: rgba(255,215,0,0.2); color: var(--gold); border: 1px solid var(--gold); display: inline-block; flex-shrink: 0;">DAILY JACKPOT! (+${jackpotWin.toLocaleString()})</div>` + hist.innerHTML;
 } else {
-    for(let i=0; i<9; i++) resultIcons.push(icons[Math.floor(Math.random()*icons.length)]);
-    
+    // 2. نسبة المكسب 60% مع مضاعفات مناسبة (تخسر مرتين وتكسب 3)
     let winChance = 0.60; 
-    if(window.slotLinesActive >= 4 && window.slotLinesActive <= 6) winChance = 0.85; 
-    else if(window.slotLinesActive >= 7) winChance = 0.95; 
+    for(let i=0; i<9; i++) resultIcons.push(icons[Math.floor(Math.random()*icons.length)]);
     
     if(Math.random() < winChance) {
         let randomWinIcon = icons[Math.floor(Math.random()*icons.length)]; let activeLine = paylinesConfig[Math.floor(Math.random() * window.slotLinesActive)];
@@ -997,6 +1007,7 @@ window.updateUI(); window.isSlotSpinningActive = false;
 }, 50);
 };
 
+// 🌟 تعديل أيقونات الجريدي (Greedy)
 window.luckyItemsConfig = [
 { id: 0, icon: '🥩', mult: 25, type: 'meat', prob: 0.02, degree: -90 },
 { id: 1, icon: '🍅', mult: 5, type: 'veg', prob: 0.20, degree: -45 },
